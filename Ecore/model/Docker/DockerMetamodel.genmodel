@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/Ecore/src" modelPluginID="Ecore" modelName="DockerMetamodel"
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="17.0" copyrightFields="false" operationReflection="true" importOrganizing="true">
+  <foreignModel>DockerMetamodel.ecore</foreignModel>
+  <genPackages prefix="Dockermetamodel" disposableProviderFactory="true" ecorePackage="DockerMetamodel.ecore#/">
+    <genClasses ecoreClass="DockerMetamodel.ecore#//Argument">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DockerMetamodel.ecore#//Argument/value"/>
+    </genClasses>
+    <genClasses ecoreClass="DockerMetamodel.ecore#//Option">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DockerMetamodel.ecore#//Option/key"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DockerMetamodel.ecore#//Option/value"/>
+    </genClasses>
+    <genClasses ecoreClass="DockerMetamodel.ecore#//Instruction">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DockerMetamodel.ecore#//Instruction/option"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DockerMetamodel.ecore#//Instruction/comment"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DockerMetamodel.ecore#//Instruction/name"/>
+    </genClasses>
+    <genClasses ecoreClass="DockerMetamodel.ecore#//From">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DockerMetamodel.ecore#//From/argument"/>
+    </genClasses>
+    <genClasses ecoreClass="DockerMetamodel.ecore#//Dockerfile">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DockerMetamodel.ecore#//Dockerfile/instruction"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DockerMetamodel.ecore#//Dockerfile/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DockerMetamodel.ecore#//Dockerfile/version"/>
+    </genClasses>
+    <genClasses ecoreClass="DockerMetamodel.ecore#//Comment">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DockerMetamodel.ecore#//Comment/content"/>
+    </genClasses>
+    <genClasses ecoreClass="DockerMetamodel.ecore#//Copy">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DockerMetamodel.ecore#//Copy/argument"/>
+    </genClasses>
+    <genClasses ecoreClass="DockerMetamodel.ecore#//Run">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DockerMetamodel.ecore#//Run/argument"/>
+    </genClasses>
+    <genClasses ecoreClass="DockerMetamodel.ecore#//Workdir">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DockerMetamodel.ecore#//Workdir/argument"/>
+    </genClasses>
+    <genClasses ecoreClass="DockerMetamodel.ecore#//Cmd">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DockerMetamodel.ecore#//Cmd/argument"/>
+    </genClasses>
+    <genClasses ecoreClass="DockerMetamodel.ecore#//Expose">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DockerMetamodel.ecore#//Expose/argument"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

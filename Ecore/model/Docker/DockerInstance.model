@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ASCII"?>
+<metamodel3:Dockerfile xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:metamodel3="http://ezdevops2.0com" xmi:id="_sTrPQIJQEe696puEe1SMFA" name="MyDockerfile" version="1.0">
+  <instruction xsi:type="metamodel3:From" xmi:id="_RZKh4IJWEe696puEe1SMFA" name="FROM">
+    <argument xmi:id="_JkzYQIJXEe696puEe1SMFA" value="ubuntu:20.04"/>
+  </instruction>
+  <instruction xsi:type="metamodel3:Run" xmi:id="_OEzYsIJXEe696puEe1SMFA" name="RUN">
+    <argument xmi:id="_RxxZsIJXEe696puEe1SMFA" value="-u myuser apt-get install -y package1 package2"/>
+  </instruction>
+  <instruction xsi:type="metamodel3:Workdir" xmi:id="_XoTIMIJXEe696puEe1SMFA" name="WORKDIR">
+    <argument xmi:id="_ZP4xEIJXEe696puEe1SMFA" value="/app"/>
+  </instruction>
+  <instruction xsi:type="metamodel3:Copy" xmi:id="_bVRJMIJXEe696puEe1SMFA" name="COPY">
+    <option xmi:id="_dMfwkIJXEe696puEe1SMFA" key="--chown" value="myuser:mygroup"/>
+    <argument xmi:id="_hDmlAIJXEe696puEe1SMFA" value="source_file dest_file"/>
+  </instruction>
+  <instruction xsi:type="metamodel3:Expose" xmi:id="_kMUCYIJXEe696puEe1SMFA" name="EXPOSE">
+    <option xmi:id="_m6s7QIJXEe696puEe1SMFA" key="-p" value="80/tcp"/>
+    <comment xmi:id="_uuzwwIJXEe696puEe1SMFA" content="exposing the port "/>
+  </instruction>
+  <instruction xsi:type="metamodel3:Cmd" xmi:id="_qAr0wIJXEe696puEe1SMFA" name="CMD">
+    <argument xmi:id="_sNS2QIJXEe696puEe1SMFA" value="[&quot;./myapp&quot;, &quot;--port=8080&quot;]"/>
+  </instruction>
+</metamodel3:Dockerfile>

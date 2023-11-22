@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="ASCII"?>
+<metamodel:Projet xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:metamodel="http://ezdevops2.0com" xmi:id="_xmrIEIGOEe6RnNlCfrDVCQ" name="mon projet" url="https://github.com/monprojettestt" branch="main">
+  <dependancesprojet xmi:id="_Wp9XEIGbEe6RnNlCfrDVCQ" nom="Hibernate" version="5.4.27" configuration="Production"/>
+  <dependancesprojet xmi:id="_CkRlwIGcEe6RnNlCfrDVCQ" nom="ReactDOM" version="17.0.2" configuration="D&#xe9;veloppement"/>
+  <dependancesprojet xmi:id="_E_fD8IGcEe6RnNlCfrDVCQ" nom="Babel" version="7.15.6" configuration="Non sp&#xe9;cifi&#xe9;e"/>
+  <configuration xmi:id="_V67t4IGbEe6RnNlCfrDVCQ" name="MonInstanceJenkins" target="https://jenkins.monprojet.com" cmdtest="mvn test"/>
+  <etapespersl xmi:id="_X9ie0IGbEe6RnNlCfrDVCQ" name="EtapePersonnalisee1" cmd="mvn clean install" description="Construction du projet avec Maven"/>
+</metamodel:Projet>

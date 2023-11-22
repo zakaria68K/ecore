@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ASCII"?>
+<hoho:config xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:hoho="http://ezdevops2.0com" xmi:id="_Eqn6IIGPEe6RnNlCfrDVCQ">
+  <agent xmi:id="_78fkAIGcEe6RnNlCfrDVCQ" type="Docker image"/>
+  <stages xmi:id="_8dXccIGcEe6RnNlCfrDVCQ" name="">
+    <tests xmi:id="_WTvkkIGdEe6RnNlCfrDVCQ" shell="sh" classestotest="DocumentsControllerTest ComplaintsControllerTest SchoolZoneControllerTest ComplaintMappersTest">
+      <credentials xmi:id="_h9QlYIGdEe6RnNlCfrDVCQ" name="Database Username" variable="TEST_DATABASE_USERNAME"/>
+      <credentials xmi:id="_or5noIGdEe6RnNlCfrDVCQ" name="Database Password" variable="TEST_DATABASE_PASSWORD"/>
+    </tests>
+    <cloning xmi:id="_Rim7YIGeEe6RnNlCfrDVCQ" url="git@github.com:Zakaria.68K/SchoolMate.git" credentialID="personal-cloning-key" branch="main">
+      <agent xmi:id="_gYyQAIGfEe6I0emwx6NUVQ" type="qlq chose"/>
+    </cloning>
+    <build xmi:id="_VZqh8IGdEe6RnNlCfrDVCQ" cmd="docker build ">
+      <credentials xmi:id="_-h98AIGdEe6RnNlCfrDVCQ" name="dockerImageTag" variable="zakaria.68K/schoolmate-api:${env.BUILD_NUMBER}"/>
+    </build>
+    <deploy xmi:id="_eHlCYIGfEe6I0emwx6NUVQ" cmd="docker push">
+      <credentials xmi:id="__ga2YIGfEe6JvsbWuLE9lw" name="dockerImageTag" variable="zakaria.68K/schoolmate-api:${env.BUILD_NUMBER}"/>
+      <credentials xmi:id="_Jmz3kIGgEe6JvsbWuLE9lw" name="Username" variable="DOCKERHUB_USERNAME"/>
+      <credentials xmi:id="_KCBz8IGgEe6JvsbWuLE9lw" name="Password" variable="DOCKERHUB_PASSWORD"/>
+    </deploy>
+  </stages>
+</hoho:config>

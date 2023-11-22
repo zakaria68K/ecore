@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;org.xtext.example.mydsl/src/org/xtext/example/mydsl/MyDsl.xtext&apos; to &apos;projet.xtext&apos;" description="Rename resource &apos;MyDsl.xtext&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/org/xtext/example/mydsl/MyDsl.xtext" name="projet.xtext" stamp="1699998359680" updateReferences="true"/>
+</session>

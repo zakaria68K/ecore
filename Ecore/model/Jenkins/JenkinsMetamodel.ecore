@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="projectsortie" nsURI="http://ezdevops2.0com" nsPrefix="hoho">
+  <eClassifiers xsi:type="ecore:EClass" name="config">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="agent" lowerBound="1" eType="#//Agent"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="stages" lowerBound="1"
+        upperBound="-1" eType="#//Stages" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Agent">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Stages">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="tests" lowerBound="1" eType="#//Tests"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="cloning" lowerBound="1"
+        eType="#//Cloning" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="build" lowerBound="1" eType="#//Build"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="deploy" lowerBound="1"
+        eType="#//Deploy" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Cloning">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="agent" eType="#//Agent"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="url" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="credentialID" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="branch" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Tests">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="agent" eType="#//Agent"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="shell" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="credentials" upperBound="-1"
+        eType="#//credentials" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="classestotest" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Build">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="agent" eType="#//Agent"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="credentials" upperBound="-1"
+        eType="#//credentials" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cmd" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="credentials">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="variable" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Deploy">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cmd" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="credentials" upperBound="-1"
+        eType="#//credentials" containment="true"/>
+  </eClassifiers>
+</ecore:EPackage>

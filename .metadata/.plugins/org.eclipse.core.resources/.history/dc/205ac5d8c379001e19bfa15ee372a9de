@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/IDM/src" modelPluginID="IDM" modelName="Projectsortie"
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="17.0" copyrightFields="false" operationReflection="true" importOrganizing="true">
+  <foreignModel>projectsortie.ecore</foreignModel>
+  <genPackages prefix="Projectsortie" disposableProviderFactory="true" ecorePackage="projectsortie.ecore#/">
+    <genClasses ecoreClass="projectsortie.ecore#//config">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute projectsortie.ecore#//config/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference projectsortie.ecore#//config/agent"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference projectsortie.ecore#//config/stages"/>
+    </genClasses>
+    <genClasses ecoreClass="projectsortie.ecore#//Agent">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute projectsortie.ecore#//Agent/type"/>
+    </genClasses>
+    <genClasses ecoreClass="projectsortie.ecore#//Stages">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute projectsortie.ecore#//Stages/name"/>
+    </genClasses>
+    <genClasses ecoreClass="projectsortie.ecore#//Cloning">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference projectsortie.ecore#//Cloning/agent"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute projectsortie.ecore#//Cloning/url"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute projectsortie.ecore#//Cloning/credentialID"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute projectsortie.ecore#//Cloning/branch"/>
+    </genClasses>
+    <genClasses ecoreClass="projectsortie.ecore#//Tests">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference projectsortie.ecore#//Tests/agent"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute projectsortie.ecore#//Tests/shell"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference projectsortie.ecore#//Tests/credentials"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute projectsortie.ecore#//Tests/classestotest"/>
+    </genClasses>
+    <genClasses ecoreClass="projectsortie.ecore#//Build">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference projectsortie.ecore#//Build/agent"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference projectsortie.ecore#//Build/credentials"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute projectsortie.ecore#//Build/cmd"/>
+    </genClasses>
+    <genClasses ecoreClass="projectsortie.ecore#//credentials">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute projectsortie.ecore#//credentials/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute projectsortie.ecore#//credentials/variable"/>
+    </genClasses>
+    <genClasses ecoreClass="projectsortie.ecore#//Deploy"/>
+  </genPackages>
+</genmodel:GenModel>

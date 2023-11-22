@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="ASCII"?>
+<hoho:config xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:hoho="http://ezdevops2.0com" xmi:id="_TFFHEHnEEe6USfbJwaEo7A">
+  <agent xmi:id="_WwLtkHnJEe6USfbJwaEo7A" type="Docker image"/>
+  <stages xmi:id="_ZT_HEHnJEe6USfbJwaEo7A">
+    <tests xmi:id="_bDpG0HnJEe6USfbJwaEo7A" shell="sh" classestotest="Mapper.java(etc)"/>
+    <cloning xmi:id="_amWG0HnJEe6USfbJwaEo7A" url="https://github.com/zakaria68K/dec.git" credentialID="f5135b9b-099c-43d8-a434-da3acde77729" branch="master"/>
+    <build xmi:id="_aJxfkHnJEe6USfbJwaEo7A"/>
+  </stages>
+</hoho:config>

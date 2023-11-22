@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/Ecore/src" modelPluginID="Ecore" modelName="InitConfig"
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="17.0" copyrightFields="false" operationReflection="true" importOrganizing="true">
+  <foreignModel>InitConfig.ecore</foreignModel>
+  <genPackages prefix="Mymetamodel" disposableProviderFactory="true" ecorePackage="InitConfig.ecore#/">
+    <genClasses ecoreClass="InitConfig.ecore#//Projet">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute InitConfig.ecore#//Projet/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute InitConfig.ecore#//Projet/url"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute InitConfig.ecore#//Projet/branch"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference InitConfig.ecore#//Projet/dependancesprojet"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference InitConfig.ecore#//Projet/configuration"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference InitConfig.ecore#//Projet/etapespersl"/>
+    </genClasses>
+    <genClasses ecoreClass="InitConfig.ecore#//DependancesProjet">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute InitConfig.ecore#//DependancesProjet/nom"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute InitConfig.ecore#//DependancesProjet/version"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute InitConfig.ecore#//DependancesProjet/configuration"/>
+    </genClasses>
+    <genClasses ecoreClass="InitConfig.ecore#//Testing">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute InitConfig.ecore#//Testing/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute InitConfig.ecore#//Testing/target"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute InitConfig.ecore#//Testing/cmdtest"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="InitConfig.ecore#//Notifications">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute InitConfig.ecore#//Notifications/adress"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute InitConfig.ecore#//Notifications/description"/>
+    </genClasses>
+    <genClasses ecoreClass="InitConfig.ecore#//Notifsucess"/>
+    <genClasses ecoreClass="InitConfig.ecore#//Notiffail"/>
+    <genClasses ecoreClass="InitConfig.ecore#//Etapesperso">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute InitConfig.ecore#//Etapesperso/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute InitConfig.ecore#//Etapesperso/cmd"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute InitConfig.ecore#//Etapesperso/description"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

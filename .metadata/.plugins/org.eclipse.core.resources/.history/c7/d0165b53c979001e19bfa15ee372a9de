@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="ASCII"?>
+<metamodel:Projet xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:metamodel="http://ezdevops2.0com" xmi:id="_0Q95oHnDEe6USfbJwaEo7A">
+  <configuration xmi:id="_2luYQHnIEe6USfbJwaEo7A" name="MonInstanceJenkins" target="https://jenkins.monprojet.com" cmdtest="mvnw test"/>
+</metamodel:Projet>
