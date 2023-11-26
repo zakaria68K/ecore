@@ -5,11 +5,13 @@ Bundle-SymbolicName: Ecore.editor;singleton:=true
 Automatic-Module-Name: Ecore.editor
 Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: .
-Bundle-Activator: dockermetamodel.presentation.DockerMetamodelEditorPlugin$Implementation
+Bundle-Activator: projectsortie.presentation.JenkinsMetamodelEditorPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-17
-Export-Package: dockermetamodel.presentation
+Export-Package: dockermetamodel.presentation,
+ mymetamodel.presentation,
+ projectsortie.presentation
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.core.resources;visibility:=reexport,
  Ecore.edit;visibility:=reexport,

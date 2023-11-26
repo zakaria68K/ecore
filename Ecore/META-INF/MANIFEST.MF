@@ -10,7 +10,13 @@ Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-17
 Export-Package: dockermetamodel,
  dockermetamodel.impl,
- dockermetamodel.util
+ dockermetamodel.util,
+ mymetamodel,
+ mymetamodel.impl,
+ mymetamodel.util,
+ projectsortie,
+ projectsortie.impl,
+ projectsortie.util
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport
 Bundle-ActivationPolicy: lazy

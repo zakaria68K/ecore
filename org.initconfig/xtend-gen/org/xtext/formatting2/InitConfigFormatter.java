@@ -5,6 +5,11 @@ package org.xtext.formatting2;
 
 import com.google.inject.Inject;
 import java.util.Arrays;
+import mymetamodel.DependancesProjet;
+import mymetamodel.Etapespersl;
+import mymetamodel.Projet;
+import mymetamodel.Testing;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.formatting2.AbstractFormatter2;
 import org.eclipse.xtext.formatting2.IFormattableDocument;
@@ -18,28 +23,30 @@ public class InitConfigFormatter extends AbstractFormatter2 {
   @Extension
   private InitConfigGrammarAccess _initConfigGrammarAccess;
 
-  protected void _format(final /* Projet */Object projet, @Extension final IFormattableDocument document) {
-    throw new Error("Unresolved compilation problems:"
-      + "\ndependancesprojet cannot be resolved"
-      + "\nformat cannot be resolved"
-      + "\nconfiguration cannot be resolved"
-      + "\nformat cannot be resolved"
-      + "\netapespersl cannot be resolved"
-      + "\nformat cannot be resolved");
+  protected void _format(final Projet projet, @Extension final IFormattableDocument document) {
+    EList<DependancesProjet> _dependancesprojet = projet.getDependancesprojet();
+    for (final DependancesProjet dependancesProjet : _dependancesprojet) {
+      document.<DependancesProjet>format(dependancesProjet);
+    }
+    document.<Testing>format(projet.getConfiguration());
+    EList<Etapespersl> _etapespersl = projet.getEtapespersl();
+    for (final Etapespersl etapespersl : _etapespersl) {
+      document.<Etapespersl>format(etapespersl);
+    }
   }
 
   public void format(final Object projet, final IFormattableDocument document) {
     if (projet instanceof XtextResource) {
       _format((XtextResource)projet, document);
       return;
+    } else if (projet instanceof Projet) {
+      _format((Projet)projet, document);
+      return;
     } else if (projet instanceof EObject) {
       _format((EObject)projet, document);
       return;
     } else if (projet == null) {
       _format((Void)null, document);
-      return;
-    } else if (projet != null) {
-      _format(projet, document);
       return;
     } else if (projet != null) {
       _format(projet, document);

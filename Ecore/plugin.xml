@@ -14,4 +14,20 @@
             genModel="model/Docker/DockerMetamodel.genmodel"/>
    </extension>
 
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated InitConfig -->
+      <package
+            uri="http://ezdevops2.0com"
+            class="mymetamodel.MymetamodelPackage"
+            genModel="model/InitConfig/InitConfig.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated JenkinsMetamodel -->
+      <package
+            uri="http://ezdevops2.0com"
+            class="projectsortie.ProjectsortiePackage"
+            genModel="model/Jenkins/JenkinsMetamodel.genmodel"/>
+   </extension>
+
 </plugin>

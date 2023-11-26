@@ -1,0 +1,10 @@
+!SESSION 2023-11-24 13:09:41.058 -----------------------------------------------
+eclipse.buildId=4.29.0.20230907-1200
+java.version=17.0.8.1
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=fr_MA
+Framework arguments:  -product org.eclipse.epp.package.modeling.product
+Command-line arguments:  -product org.eclipse.epp.package.modeling.product -data C:\Users\zakar\eclipse-workspace/../runtime-EclipseApplication -dev file:C:/Users/zakar/eclipse-workspace/.metadata/.plugins/org.eclipse.pde.core/Eclipse Application/dev.properties -os win32 -ws win32 -arch x86_64 -consoleLog
+
+!ENTRY org.eclipse.emf.ecore 2 0 2023-11-24 13:09:51.179
+!MESSAGE Both 'Ecore' and 'Ecore' register a package for 'http://ezdevops2.0com'

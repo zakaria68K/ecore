@@ -1,0 +1,68 @@
+module InitConfigToJenkins;
+
+import "http://ezdevops2.0com" as init
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+import org.xtext.InitConfig.*;
+import org.xtext.Jenkins.*;
+
+
+rule ProjetToConfig {
+	from
+		source: Projet
+	to
+		target: config
+	do {
+		target.name = source.name;
+	}
+}
+
+rule ProjetToCloning {
+	from
+		source: Projet
+	to
+		target: Cloning
+	do {
+		target.url = source.url + '.git';
+		target.credentialID = 'personal-cloning-key';
+		target.branch = source.branch;
+	}
+}
+
+rule ProjetToTests {
+	from
+		source: Testing
+	to
+		target: Tests
+	do {
+		target.shell = 'sh(' + source.Cmdtest + '-Dspring.profiles.active=prod -Dspring.datasource.url=$TEST_DATABASE_URL -Dspring.datasource.username=$TEST_DATABASE_USERNAME -Dspring.datasource.password=$TEST_DATABASE_PASSWORD -Dtest="UserControllerTest")';
+		target.credentials.name='tag'
+		target.credentials.variable='${dockerImageTag}'
+	}
+}
+
+rule ProjetToBuild {
+	from
+		source: Projet
+	to
+		target: Build
+	do {
+		target.cmd = "sh \"docker build -t "+ target.credentials.variable \"";
+		target.credentials.name='tag'
+		target.credentials.variable='${dockerImageTag}'
+	}
+}
+
+
+rule ProjetToDeploy {
+	from
+		source: Projet
+	to
+		target: Deploy
+	do {
+		target.cmd = 'docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD &&
+						sh "docker push ${dockerImageTag}" ';
+	}
+}
+
+
+

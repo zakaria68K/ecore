@@ -8,7 +8,9 @@ Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-17
-Export-Package: dockermetamodel.tests
+Export-Package: dockermetamodel.tests,
+ mymetamodel.tests,
+ projectsortie.tests
 Require-Bundle: org.eclipse.core.runtime,
  Ecore;visibility:=reexport,
  org.eclipse.emf.ecore.xmi;visibility:=reexport,

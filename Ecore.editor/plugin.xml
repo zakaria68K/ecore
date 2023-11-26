@@ -34,4 +34,58 @@
       </editor>
    </extension>
 
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated InitConfig -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="mymetamodel.presentation.MymetamodelModelWizardID"
+            name="%_UI_MymetamodelModelWizard_label"
+            class="mymetamodel.presentation.MymetamodelModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/MymetamodelModelFile.gif">
+         <description>%_UI_MymetamodelModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated InitConfig -->
+      <editor
+            id="mymetamodel.presentation.MymetamodelEditorID"
+            name="%_UI_MymetamodelEditor_label"
+            icon="icons/full/obj16/MymetamodelModelFile.gif"
+            extensions="mymetamodel"
+            class="mymetamodel.presentation.MymetamodelEditor"
+            contributorClass="mymetamodel.presentation.MymetamodelActionBarContributor">
+      </editor>
+   </extension>
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated JenkinsMetamodel -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="projectsortie.presentation.ProjectsortieModelWizardID"
+            name="%_UI_ProjectsortieModelWizard_label"
+            class="projectsortie.presentation.ProjectsortieModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/ProjectsortieModelFile.gif">
+         <description>%_UI_ProjectsortieModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated JenkinsMetamodel -->
+      <editor
+            id="projectsortie.presentation.ProjectsortieEditorID"
+            name="%_UI_ProjectsortieEditor_label"
+            icon="icons/full/obj16/ProjectsortieModelFile.gif"
+            extensions="projectsortie"
+            class="projectsortie.presentation.ProjectsortieEditor"
+            contributorClass="projectsortie.presentation.ProjectsortieActionBarContributor">
+      </editor>
+   </extension>
 </plugin>

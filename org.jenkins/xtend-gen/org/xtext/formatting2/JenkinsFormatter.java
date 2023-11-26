@@ -5,12 +5,20 @@ package org.xtext.formatting2;
 
 import com.google.inject.Inject;
 import java.util.Arrays;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.formatting2.AbstractFormatter2;
 import org.eclipse.xtext.formatting2.IFormattableDocument;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.xbase.lib.Extension;
 import org.xtext.services.JenkinsGrammarAccess;
+import projectsortie.Agent;
+import projectsortie.Build;
+import projectsortie.Cloning;
+import projectsortie.Deploy;
+import projectsortie.Stages;
+import projectsortie.Tests;
+import projectsortie.config;
 
 @SuppressWarnings("all")
 public class JenkinsFormatter extends AbstractFormatter2 {
@@ -18,45 +26,43 @@ public class JenkinsFormatter extends AbstractFormatter2 {
   @Extension
   private JenkinsGrammarAccess _jenkinsGrammarAccess;
 
-  protected void _format(final /* config */Object config, @Extension final IFormattableDocument document) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nagent cannot be resolved"
-      + "\nformat cannot be resolved"
-      + "\nstages cannot be resolved"
-      + "\nformat cannot be resolved");
+  protected void _format(final config config, @Extension final IFormattableDocument document) {
+    document.<Agent>format(config.getAgent());
+    EList<Stages> _stages = config.getStages();
+    for (final Stages stages : _stages) {
+      document.<Stages>format(stages);
+    }
   }
 
-  protected void _format(final /* Stages */Object stages, @Extension final IFormattableDocument document) {
-    throw new Error("Unresolved compilation problems:"
-      + "\ntests cannot be resolved"
-      + "\nformat cannot be resolved"
-      + "\ncloning cannot be resolved"
-      + "\nformat cannot be resolved"
-      + "\nbuild cannot be resolved"
-      + "\nformat cannot be resolved"
-      + "\ndeploy cannot be resolved"
-      + "\nformat cannot be resolved");
+  protected void _format(final Stages stages, @Extension final IFormattableDocument document) {
+    document.<Tests>format(stages.getTests());
+    document.<Cloning>format(stages.getCloning());
+    document.<Build>format(stages.getBuild());
+    document.<Deploy>format(stages.getDeploy());
   }
 
-  public void format(final Object config, final IFormattableDocument document) {
-    if (config instanceof XtextResource) {
-      _format((XtextResource)config, document);
+  public void format(final Object stages, final IFormattableDocument document) {
+    if (stages instanceof XtextResource) {
+      _format((XtextResource)stages, document);
       return;
-    } else if (config instanceof EObject) {
-      _format((EObject)config, document);
+    } else if (stages instanceof Stages) {
+      _format((Stages)stages, document);
       return;
-    } else if (config == null) {
+    } else if (stages instanceof config) {
+      _format((config)stages, document);
+      return;
+    } else if (stages instanceof EObject) {
+      _format((EObject)stages, document);
+      return;
+    } else if (stages == null) {
       _format((Void)null, document);
       return;
-    } else if (config != null) {
-      _format(config, document);
-      return;
-    } else if (config != null) {
-      _format(config, document);
+    } else if (stages != null) {
+      _format(stages, document);
       return;
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
-        Arrays.<Object>asList(config, document).toString());
+        Arrays.<Object>asList(stages, document).toString());
     }
   }
 }
