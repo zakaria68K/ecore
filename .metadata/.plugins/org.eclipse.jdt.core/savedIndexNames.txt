@@ -24,7 +24,6 @@ INDEX VERSION 1.134+C:\Users\zakar\eclipse-workspace\.metadata\.plugins\org.ecli
 211803544.index
 367452632.index
 1865797976.index
-2411620476.index
 663124928.index
 3616959360.index
 2163296378.index
