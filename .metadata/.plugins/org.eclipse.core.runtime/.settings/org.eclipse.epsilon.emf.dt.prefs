@@ -1,2 +1,2 @@
 eclipse.preferences.version=1
-metamodels=\\Ecore\\model\\InitConfig\\InitConfig.ecore;\\MDE Projet\\Ecore\\model\\Docker\\DockerMetamodel.ecore;\\MDE Projet\\Ecore\\model\\InitConfig\\InitConfig.ecore
+metamodels=\\Ecore\\model\\InitConfig\\InitConfig.ecore;\\MDE Projet\\Ecore\\model\\Docker\\DockerMetamodel.ecore;\\MDE Projet\\Ecore\\model\\InitConfig\\InitConfig.ecore;\\Ecore\\model\\Jenkins\\JenkinsMetamodel.ecore

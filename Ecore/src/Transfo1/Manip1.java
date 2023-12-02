@@ -1,10 +1,12 @@
 package Transfo1;
 
 
+import org.eclipse.emf.common.util.URI;
 //import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -23,26 +25,27 @@ public class  Manip1{
       resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("*", new XMIResourceFactoryImpl());
 
       // Charger le méta-modèle depuis le fichier Ecore
-      Resource resource = resourceSet.getResource(
-              org.eclipse.emf.common.util.URI.createFileURI("C:/Users/zakar/eclipse-workspace/Ecore/model/InitConfig/InitConfig.ecore"), true);
-      EPackage inputMetaModel  = (EPackage) resource.getContents().get(0);
-      //charger le metamodele de sortie.
-      Resource resource1 = resourceSet.getResource(
-              org.eclipse.emf.common.util.URI.createFileURI("C:/Users/zakar/eclipse-workspace/Ecore/model/Jenkins/JenkinsMetamodel.ecore"), true);
-      EPackage outputMetaModel  = (EPackage) resource.getContents().get(0);
 
+      Resource MMResource = resourceSet.getResource(URI.createFileURI("C:/Users/zakar/eclipse-workspace/Ecore/model/InitConfig/InitConfig.ecore"), true);
+      EObject MMracine = MMResource.getContents().get(0);
+      EPackage MMePackage = (EPackage) MMracine;
+ 
+
+      //chargement du model
       
-      // Accéder aux éléments du méta-modèle
-      for (EClassifier eClassifier : inputMetaModel .getEClassifiers()) {
-          if (eClassifier instanceof EClass) {
-              EClass eClass = (EClass) eClassifier;
-              System.out.println("Classe: " + eClass.getName());
+      String nsUri = ((EPackage) MMracine).getNsURI();
+      resourceSet.getPackageRegistry().put(nsUri, MMePackage);
+      Resource load_resource = resourceSet.getResource(URI.createFileURI("C:/Users/zakar/eclipse-workspace/Ecore/model/InitConfig/InitConfig.model"), true);
+      Resource MResource = load_resource;
+      EObject MRacine = MResource.getContents().get(0);
+      // Print "Hello, World!"
+      System.out.println("Hello, World!");
+      
+      
+ 
 
-              // Accéder aux attributs de la classe
-              for (EAttribute eAttribute : eClass.getEAttributes()) {
-                  System.out.println("Attribut: " + eAttribute.getName() + " - Type: " + eAttribute.getEType().getName());
-              }
-          }
-      }
   }
+//	 public String getnsURI(EObject eObject) {
+//	    return eObject.getNsURI();
+//	}
 }
