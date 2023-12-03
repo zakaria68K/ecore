@@ -1,2 +1,8 @@
 <?xml version="1.0" encoding="ASCII"?>
-<hoho:config xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:hoho="http://ezdevops2.0com"/>
+<hoho:config xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:hoho="http://ezdevops2.0com" name="mon projet">
+  <stages xsi:type="hoho:Cloning" branch="main"/>
+  <stages xsi:type="hoho:Cloning" url="https://github.com/monprojettestt"/>
+  <stages xsi:type="hoho:Cloning" credentialID="personal-cloning-key"/>
+  <stages xsi:type="hoho:Build" cmd="sh &quot;docker build -t ${dockerImageTag} .&quot;"/>
+  <stages xsi:type="hoho:Deploy" cmd="sh &quot;docker push ${dockerImageTag}&quot;"/>
+</hoho:config>
