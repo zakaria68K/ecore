@@ -7,6 +7,7 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
@@ -32,75 +33,74 @@ public class Manip1 {
         EPackage MMSePackage = (EPackage) MMSracine;
 
         // Load the input model (InitConfig.model)
-       // Resource inputModelResource = resourceSet.getResource(URI.createFileURI("C:/Users/zakar/eclipse-workspace/Ecore/model/InitConfig/InitConfig.model"), true);
-        //EObject inputModelRoot = inputModelResource.getContents().get(0);
-        String nsUri = ((EPackage) MMracine).getNsURI();
+        String nsUri = MMePackage.getNsURI();
         resourceSet.getPackageRegistry().put(nsUri, MMePackage);
         Resource load_resource = resourceSet.getResource(URI.createFileURI("C:/Users/zakar/eclipse-workspace/Ecore/model/InitConfig/InitConfig.model"), true);
         Resource MResource = load_resource;
         EObject MRacine = MResource.getContents().get(0);
 
-        // Create an instance of the root class from the output metamodel
+        // Create an instance of the root class from the output metamodele
         EClass outputRootClass = (EClass) MMSePackage.getEClassifier("config");
         EObject outputModelRoot = MMSePackage.getEFactoryInstance().create(outputRootClass);
-
-        // Transformation rules
-
-        // Projet.name to Config.name
-        EAttribute inputProjetNameAttribute = (EAttribute) ((EClass) MMePackage.getEClassifier("Projet"))
-                .getEStructuralFeature("name");
-        EAttribute outputConfigNameAttribute = (EAttribute) ((EClass) MMSePackage.getEClassifier("config"))
-                .getEStructuralFeature("name");
-        outputModelRoot.eSet(outputConfigNameAttribute, MRacine.eGet(inputProjetNameAttribute));
        
-        
 
-        // Projet.branch to Cloning.branch
-        EAttribute inputProjetBranchAttribute = (EAttribute) ((EClass) MMePackage.getEClassifier("Projet"))
-                .getEStructuralFeature("branch");
-        EAttribute outputCloningBranchAttribute = (EAttribute) ((EClass) MMSePackage.getEClassifier("Cloning"))
-                .getEStructuralFeature("branch");
-        outputModelRoot.eSet(outputCloningBranchAttribute, MRacine.eGet(inputProjetBranchAttribute));
+        printEObject(outputModelRoot,0);
+    }
 
-        // Projet.url to Cloning.url
-        EAttribute inputProjetUrlAttribute = (EAttribute) ((EClass) MMePackage.getEClassifier("Projet"))
-                .getEStructuralFeature("url");
-        EAttribute outputCloningUrlAttribute = (EAttribute) ((EClass) MMSePackage.getEClassifier("Cloning"))
-                .getEStructuralFeature("url");
-        outputModelRoot.eSet(outputCloningUrlAttribute,
-        		MRacine.eGet(inputProjetUrlAttribute) + "git");
+    private static void setFeatureValue(EObject targetObject, EPackage targetPackage, String targetClassName, String targetFeatureName,
+            EObject sourceObject, EPackage sourcePackage, String sourceClassName, String sourceFeatureName) {
+        EClass targetClass = (EClass) targetPackage.getEClassifier(targetClassName);
+        EAttribute targetFeature = (EAttribute) targetClass.getEStructuralFeature(targetFeatureName);
 
-        // Testing.cmdtest to Tests.shell
-        EAttribute inputTestingCmdTestAttribute = (EAttribute) ((EClass) MMePackage.getEClassifier("Testing"))
-                .getEStructuralFeature("cmdtest");
-        EAttribute outputTestsShellAttribute = (EAttribute) ((EClass) MMSePackage.getEClassifier("Tests"))
-                .getEStructuralFeature("shell");
-        outputModelRoot.eSet(outputTestsShellAttribute, MRacine.eGet(inputTestingCmdTestAttribute));
+        EClass sourceClass = (EClass) sourcePackage.getEClassifier(sourceClassName);
+        EAttribute sourceFeature = (EAttribute) sourceClass.getEStructuralFeature(sourceFeatureName);
 
-        // Default values
+        targetObject.eSet(targetFeature, sourceObject.eGet(sourceFeature));
+    }
 
-        // Default value for Cloning.credentialID
-        EAttribute outputCloningCredentialIdAttribute = (EAttribute) ((EClass) MMSePackage.getEClassifier("Cloning"))
-                .getEStructuralFeature("credentialID");
-        outputModelRoot.eSet(outputCloningCredentialIdAttribute, "personal-cloning-key");
+    private static void setFeatureValue(EObject targetObject, EPackage targetPackage, String targetClassName, String targetFeatureName, Object value) {
+        EClass targetClass = (EClass) targetPackage.getEClassifier(targetClassName);
+        EAttribute targetFeature = (EAttribute) targetClass.getEStructuralFeature(targetFeatureName);
 
-        // Default value for Build.cmd
-        EAttribute outputBuildCmdAttribute = (EAttribute) ((EClass) MMSePackage.getEClassifier("Build"))
-                .getEStructuralFeature("cmd");
-        outputModelRoot.eSet(outputBuildCmdAttribute, "sh \"docker build -t ${dockerImageTag} .\"");
+        targetObject.eSet(targetFeature, value);
+    }
 
-        // Default value for Deploy.cmd
-        EAttribute outputDeployCmdAttribute = (EAttribute) ((EClass) MMSePackage.getEClassifier("Deploy"))
-                .getEStructuralFeature("cmd");
-        outputModelRoot.eSet(outputDeployCmdAttribute, "sh \"docker push ${dockerImageTag}\"");
+  
+    
 
-        // Save Output Model:
-        Resource outputModelResource = resourceSet.createResource(URI.createFileURI("C:/Users/zakar/eclipse-workspace/Ecore/model/Output.model"));
-        outputModelResource.getContents().add(outputModelRoot);
-        try {
-            outputModelResource.save(null);
-        } catch (IOException e) {
-            e.printStackTrace();
+    private static void printEObject(EObject eObject, int indent) {
+        for (EStructuralFeature feature : eObject.eClass().getEStructuralFeatures()) {
+            Object value = eObject.eGet(feature);
+            
+            // Print feature name and value
+            System.out.print(getIndent(indent) + feature.getName() + ": ");
+            if (feature.isMany()) {
+                System.out.println();
+                for (Object element : (Iterable<?>) value) {
+                    if (element instanceof EObject) {
+                        printEObject((EObject) element, indent + 1);
+                    } else {
+                        System.out.println(getIndent(indent + 1) + element);
+                    }
+                }
+            } else {
+                if (value instanceof EObject) {
+                    System.out.println();
+                    printEObject((EObject) value, indent + 1);
+                } else {
+                    System.out.println(value);
+                }
+            }
         }
     }
+
+    private static String getIndent(int count) {
+        StringBuilder indent = new StringBuilder();
+        for (int i = 0; i < count; i++) {
+            indent.append("  "); // Adjust the number of spaces as needed
+        }
+        return indent.toString();
+    }
+
+    
 }
