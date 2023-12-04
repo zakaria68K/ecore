@@ -9,6 +9,7 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -65,11 +66,15 @@ public class Manip1 {
         EAttribute urlFeature = (EAttribute) cloningClassUrl.getEStructuralFeature("url");
         cloningObjectUrl.eSet(urlFeature, MRacine.eGet(((EClass) MMePackage.getEClassifier("Projet")).getEStructuralFeature("url")));
         ((EList<EObject>) outputModelRoot.eGet(((EClass) MMSePackage.getEClassifier("config")).getEStructuralFeature("stages"))).add(cloningObjectUrl);
-
+        
         // Testing.cmdtest to Tests.shell
-
-
-
+        EClass testsClassShell = (EClass) MMSePackage.getEClassifier("Tests");
+        EObject testsObjectShell = MMSePackage.getEFactoryInstance().create(testsClassShell);
+        EAttribute shellFeature = (EAttribute) testsClassShell.getEStructuralFeature("shell");
+        // MRacine.eGet(((EClass) MMePackage.getEClassifier("Testing")).getEStructuralFeature("Cmdtest"))
+        testsObjectShell.eSet(shellFeature, "mvn test");
+        ((EList<EObject>) outputModelRoot.eGet(((EClass) MMSePackage.getEClassifier("config")).getEStructuralFeature("stages"))).add(testsObjectShell);
+        
         // Default values
 
         // Default value for Cloning.credentialID

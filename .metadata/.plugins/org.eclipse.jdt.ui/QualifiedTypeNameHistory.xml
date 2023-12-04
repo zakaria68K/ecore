@@ -5,6 +5,6 @@
     <fullyQualifiedTypeName name="java.net.URISyntaxException"/>
     <fullyQualifiedTypeName name="org.eclipse.emf.ecore.EcorePackage"/>
     <fullyQualifiedTypeName name="org.eclipse.emf.common.util.URI"/>
-    <fullyQualifiedTypeName name="org.eclipse.emf.ecore.EReference"/>
     <fullyQualifiedTypeName name="org.eclipse.emf.ecore.EStructuralFeature"/>
+    <fullyQualifiedTypeName name="org.eclipse.emf.ecore.EReference"/>
 </qualifiedTypeNameHistroy>
