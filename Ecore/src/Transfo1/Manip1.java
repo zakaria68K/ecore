@@ -1,9 +1,10 @@
 package Transfo1;
 
 import java.io.IOException;
+import java.util.Collections;
+
 import org.eclipse.emf.common.util.EList;
-
-
+import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -14,6 +15,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
 public class Manip1 {
@@ -68,13 +70,34 @@ public class Manip1 {
         ((EList<EObject>) outputModelRoot.eGet(((EClass) MMSePackage.getEClassifier("config")).getEStructuralFeature("stages"))).add(cloningObjectUrl);
         
         // Testing.cmdtest to Tests.shell
-        EClass testsClassShell = (EClass) MMSePackage.getEClassifier("Tests");
-        EObject testsObjectShell = MMSePackage.getEFactoryInstance().create(testsClassShell);
-        EAttribute shellFeature = (EAttribute) testsClassShell.getEStructuralFeature("shell");
-        // MRacine.eGet(((EClass) MMePackage.getEClassifier("Testing")).getEStructuralFeature("Cmdtest"))
-        testsObjectShell.eSet(shellFeature, "mvn test");
-        ((EList<EObject>) outputModelRoot.eGet(((EClass) MMSePackage.getEClassifier("config")).getEStructuralFeature("stages"))).add(testsObjectShell);
         
+        
+        EObject rootObject = MRacine;
+        // Iterate through all elements
+        TreeIterator<Object> iterator = EcoreUtil.getAllContents(Collections.singletonList(rootObject));
+        while (iterator.hasNext()) {
+            Object obj = iterator.next();
+
+            if (obj instanceof EObject) {
+                EObject eObject = (EObject) obj;
+                for (EStructuralFeature feature : eObject.eClass().getEAllStructuralFeatures()) {
+                    Object value = eObject.eGet(feature);
+                    if ("cmdtest".equals(feature.getName())) {
+                    
+                   	 String cmdTesting = value.toString();
+                   	EClass testsClassShell = (EClass) MMSePackage.getEClassifier("Tests");
+                    EObject testsObjectShell = MMSePackage.getEFactoryInstance().create(testsClassShell);
+                    EAttribute shellFeature = (EAttribute) testsClassShell.getEStructuralFeature("shell");
+                    // MRacine.eGet(((EClass) MMePackage.getEClassifier("Testing")).getEStructuralFeature("Cmdtest"))
+                    testsObjectShell.eSet(shellFeature, cmdTesting);
+                    ((EList<EObject>) outputModelRoot.eGet(((EClass) MMSePackage.getEClassifier("config")).getEStructuralFeature("stages"))).add(testsObjectShell);
+                    
+                    }
+                }
+            }
+        }
+          
+
         // Default values
 
         // Default value for Cloning.credentialID
