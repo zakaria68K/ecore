@@ -189,7 +189,7 @@ public class Manip1 {
                     printEObject((EObject) value, indent + 1);
                 } else {
                     System.out.println(value);
-                }
+                }  
             }
         }
     }
