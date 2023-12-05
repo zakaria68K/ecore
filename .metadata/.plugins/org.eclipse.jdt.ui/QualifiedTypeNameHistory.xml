@@ -15,4 +15,5 @@
     <fullyQualifiedTypeName name="mymetamodel.Testing"/>
     <fullyQualifiedTypeName name="projectsortie.config"/>
     <fullyQualifiedTypeName name="java.io.InputStream"/>
+    <fullyQualifiedTypeName name="java.net.HttpURLConnection"/>
 </qualifiedTypeNameHistroy>
