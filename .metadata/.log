@@ -6618,3 +6618,155 @@ Caused by: java.lang.Exception: Resource '/MDE Projet/Ecore/model/InitConfig/Ini
 	at org.eclipse.core.internal.resources.ResourceException.provideStackTrace(ResourceException.java:42)
 	at org.eclipse.core.internal.resources.ResourceException.<init>(ResourceException.java:38)
 	... 19 more
+!SESSION 2023-12-05 22:33:32.324 -----------------------------------------------
+eclipse.buildId=4.29.0.20230907-1200
+java.version=17.0.9
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=fr_MA
+Framework arguments:  -product org.eclipse.epp.package.modeling.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.modeling.product
+
+!ENTRY org.eclipse.egit.ui 2 0 2023-12-05 22:34:11.179
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\zakar'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.epsilon.common.dt 4 0 2023-12-05 22:34:11.368
+!MESSAGE Resource '/MDE Projet/Ecore/model/Docker/DockerMetamodel.ecore' does not exist.
+!STACK 0
+org.eclipse.emf.ecore.resource.Resource$IOWrappedException: Resource '/MDE Projet/Ecore/model/Docker/DockerMetamodel.ecore' does not exist.
+	at org.eclipse.emf.ecore.resource.impl.PlatformResourceURIHandlerImpl$WorkbenchHelper.createPlatformResourceInputStream(PlatformResourceURIHandlerImpl.java:223)
+	at org.eclipse.emf.ecore.resource.impl.PlatformResourceURIHandlerImpl.createInputStream(PlatformResourceURIHandlerImpl.java:574)
+	at org.eclipse.emf.ecore.resource.impl.ExtensibleURIConverterImpl.createInputStream(ExtensibleURIConverterImpl.java:358)
+	at org.eclipse.emf.ecore.resource.impl.ResourceImpl.load(ResourceImpl.java:1314)
+	at org.eclipse.epsilon.emc.emf.EmfUtil.register(EmfUtil.java:239)
+	at org.eclipse.epsilon.emc.emf.EmfUtil.register(EmfUtil.java:203)
+	at org.eclipse.epsilon.emf.dt.EmfRegistryManager.registerMetamodel(EmfRegistryManager.java:131)
+	at org.eclipse.epsilon.emf.dt.EmfRegistryManager.<init>(EmfRegistryManager.java:45)
+	at org.eclipse.epsilon.emf.dt.EmfRegistryManager.getInstance(EmfRegistryManager.java:36)
+	at org.eclipse.epsilon.emf.dt.EmfUtilPlugin.earlyStartup(EmfUtilPlugin.java:69)
+	at org.eclipse.ui.internal.EarlyStartupRunnable.runEarlyStartup(EarlyStartupRunnable.java:79)
+	at org.eclipse.ui.internal.EarlyStartupRunnable.run(EarlyStartupRunnable.java:55)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.ui.internal.Workbench$39.run(Workbench.java:2737)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: org.eclipse.core.internal.resources.ResourceException: Resource '/MDE Projet/Ecore/model/Docker/DockerMetamodel.ecore' does not exist.
+	at org.eclipse.core.internal.resources.Resource.checkExists(Resource.java:367)
+	at org.eclipse.core.internal.resources.Resource.checkAccessible(Resource.java:241)
+	at org.eclipse.core.internal.resources.File.getContents(File.java:296)
+	at org.eclipse.core.internal.resources.File.getContents(File.java:289)
+	at org.eclipse.emf.ecore.resource.impl.PlatformResourceURIHandlerImpl$WorkbenchHelper.createPlatformResourceInputStream(PlatformResourceURIHandlerImpl.java:209)
+	... 14 more
+Caused by: java.lang.Exception: Resource '/MDE Projet/Ecore/model/Docker/DockerMetamodel.ecore' does not exist.
+	at org.eclipse.core.internal.resources.ResourceException.provideStackTrace(ResourceException.java:42)
+	at org.eclipse.core.internal.resources.ResourceException.<init>(ResourceException.java:38)
+	... 19 more
+
+!ENTRY org.eclipse.epsilon.common.dt 4 0 2023-12-05 22:34:11.379
+!MESSAGE Resource '/MDE Projet/Ecore/model/InitConfig/InitConfig.ecore' does not exist.
+!STACK 0
+org.eclipse.emf.ecore.resource.Resource$IOWrappedException: Resource '/MDE Projet/Ecore/model/InitConfig/InitConfig.ecore' does not exist.
+	at org.eclipse.emf.ecore.resource.impl.PlatformResourceURIHandlerImpl$WorkbenchHelper.createPlatformResourceInputStream(PlatformResourceURIHandlerImpl.java:223)
+	at org.eclipse.emf.ecore.resource.impl.PlatformResourceURIHandlerImpl.createInputStream(PlatformResourceURIHandlerImpl.java:574)
+	at org.eclipse.emf.ecore.resource.impl.ExtensibleURIConverterImpl.createInputStream(ExtensibleURIConverterImpl.java:358)
+	at org.eclipse.emf.ecore.resource.impl.ResourceImpl.load(ResourceImpl.java:1314)
+	at org.eclipse.epsilon.emc.emf.EmfUtil.register(EmfUtil.java:239)
+	at org.eclipse.epsilon.emc.emf.EmfUtil.register(EmfUtil.java:203)
+	at org.eclipse.epsilon.emf.dt.EmfRegistryManager.registerMetamodel(EmfRegistryManager.java:131)
+	at org.eclipse.epsilon.emf.dt.EmfRegistryManager.<init>(EmfRegistryManager.java:45)
+	at org.eclipse.epsilon.emf.dt.EmfRegistryManager.getInstance(EmfRegistryManager.java:36)
+	at org.eclipse.epsilon.emf.dt.EmfUtilPlugin.earlyStartup(EmfUtilPlugin.java:69)
+	at org.eclipse.ui.internal.EarlyStartupRunnable.runEarlyStartup(EarlyStartupRunnable.java:79)
+	at org.eclipse.ui.internal.EarlyStartupRunnable.run(EarlyStartupRunnable.java:55)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.ui.internal.Workbench$39.run(Workbench.java:2737)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: org.eclipse.core.internal.resources.ResourceException: Resource '/MDE Projet/Ecore/model/InitConfig/InitConfig.ecore' does not exist.
+	at org.eclipse.core.internal.resources.Resource.checkExists(Resource.java:367)
+	at org.eclipse.core.internal.resources.Resource.checkAccessible(Resource.java:241)
+	at org.eclipse.core.internal.resources.File.getContents(File.java:296)
+	at org.eclipse.core.internal.resources.File.getContents(File.java:289)
+	at org.eclipse.emf.ecore.resource.impl.PlatformResourceURIHandlerImpl$WorkbenchHelper.createPlatformResourceInputStream(PlatformResourceURIHandlerImpl.java:209)
+	... 14 more
+Caused by: java.lang.Exception: Resource '/MDE Projet/Ecore/model/InitConfig/InitConfig.ecore' does not exist.
+	at org.eclipse.core.internal.resources.ResourceException.provideStackTrace(ResourceException.java:42)
+	at org.eclipse.core.internal.resources.ResourceException.<init>(ResourceException.java:38)
+	... 19 more
+!SESSION 2023-12-05 22:40:45.546 -----------------------------------------------
+eclipse.buildId=4.29.0.20230907-1200
+java.version=17.0.9
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=fr_MA
+Framework arguments:  -product org.eclipse.epp.package.modeling.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.modeling.product
+
+!ENTRY org.eclipse.egit.ui 2 0 2023-12-05 22:41:27.005
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\zakar'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.epsilon.common.dt 4 0 2023-12-05 22:41:27.231
+!MESSAGE Resource '/MDE Projet/Ecore/model/Docker/DockerMetamodel.ecore' does not exist.
+!STACK 0
+org.eclipse.emf.ecore.resource.Resource$IOWrappedException: Resource '/MDE Projet/Ecore/model/Docker/DockerMetamodel.ecore' does not exist.
+	at org.eclipse.emf.ecore.resource.impl.PlatformResourceURIHandlerImpl$WorkbenchHelper.createPlatformResourceInputStream(PlatformResourceURIHandlerImpl.java:223)
+	at org.eclipse.emf.ecore.resource.impl.PlatformResourceURIHandlerImpl.createInputStream(PlatformResourceURIHandlerImpl.java:574)
+	at org.eclipse.emf.ecore.resource.impl.ExtensibleURIConverterImpl.createInputStream(ExtensibleURIConverterImpl.java:358)
+	at org.eclipse.emf.ecore.resource.impl.ResourceImpl.load(ResourceImpl.java:1314)
+	at org.eclipse.epsilon.emc.emf.EmfUtil.register(EmfUtil.java:239)
+	at org.eclipse.epsilon.emc.emf.EmfUtil.register(EmfUtil.java:203)
+	at org.eclipse.epsilon.emf.dt.EmfRegistryManager.registerMetamodel(EmfRegistryManager.java:131)
+	at org.eclipse.epsilon.emf.dt.EmfRegistryManager.<init>(EmfRegistryManager.java:45)
+	at org.eclipse.epsilon.emf.dt.EmfRegistryManager.getInstance(EmfRegistryManager.java:36)
+	at org.eclipse.epsilon.emf.dt.EmfUtilPlugin.earlyStartup(EmfUtilPlugin.java:69)
+	at org.eclipse.ui.internal.EarlyStartupRunnable.runEarlyStartup(EarlyStartupRunnable.java:79)
+	at org.eclipse.ui.internal.EarlyStartupRunnable.run(EarlyStartupRunnable.java:55)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.ui.internal.Workbench$39.run(Workbench.java:2737)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: org.eclipse.core.internal.resources.ResourceException: Resource '/MDE Projet/Ecore/model/Docker/DockerMetamodel.ecore' does not exist.
+	at org.eclipse.core.internal.resources.Resource.checkExists(Resource.java:367)
+	at org.eclipse.core.internal.resources.Resource.checkAccessible(Resource.java:241)
+	at org.eclipse.core.internal.resources.File.getContents(File.java:296)
+	at org.eclipse.core.internal.resources.File.getContents(File.java:289)
+	at org.eclipse.emf.ecore.resource.impl.PlatformResourceURIHandlerImpl$WorkbenchHelper.createPlatformResourceInputStream(PlatformResourceURIHandlerImpl.java:209)
+	... 14 more
+Caused by: java.lang.Exception: Resource '/MDE Projet/Ecore/model/Docker/DockerMetamodel.ecore' does not exist.
+	at org.eclipse.core.internal.resources.ResourceException.provideStackTrace(ResourceException.java:42)
+	at org.eclipse.core.internal.resources.ResourceException.<init>(ResourceException.java:38)
+	... 19 more
+
+!ENTRY org.eclipse.epsilon.common.dt 4 0 2023-12-05 22:41:27.253
+!MESSAGE Resource '/MDE Projet/Ecore/model/InitConfig/InitConfig.ecore' does not exist.
+!STACK 0
+org.eclipse.emf.ecore.resource.Resource$IOWrappedException: Resource '/MDE Projet/Ecore/model/InitConfig/InitConfig.ecore' does not exist.
+	at org.eclipse.emf.ecore.resource.impl.PlatformResourceURIHandlerImpl$WorkbenchHelper.createPlatformResourceInputStream(PlatformResourceURIHandlerImpl.java:223)
+	at org.eclipse.emf.ecore.resource.impl.PlatformResourceURIHandlerImpl.createInputStream(PlatformResourceURIHandlerImpl.java:574)
+	at org.eclipse.emf.ecore.resource.impl.ExtensibleURIConverterImpl.createInputStream(ExtensibleURIConverterImpl.java:358)
+	at org.eclipse.emf.ecore.resource.impl.ResourceImpl.load(ResourceImpl.java:1314)
+	at org.eclipse.epsilon.emc.emf.EmfUtil.register(EmfUtil.java:239)
+	at org.eclipse.epsilon.emc.emf.EmfUtil.register(EmfUtil.java:203)
+	at org.eclipse.epsilon.emf.dt.EmfRegistryManager.registerMetamodel(EmfRegistryManager.java:131)
+	at org.eclipse.epsilon.emf.dt.EmfRegistryManager.<init>(EmfRegistryManager.java:45)
+	at org.eclipse.epsilon.emf.dt.EmfRegistryManager.getInstance(EmfRegistryManager.java:36)
+	at org.eclipse.epsilon.emf.dt.EmfUtilPlugin.earlyStartup(EmfUtilPlugin.java:69)
+	at org.eclipse.ui.internal.EarlyStartupRunnable.runEarlyStartup(EarlyStartupRunnable.java:79)
+	at org.eclipse.ui.internal.EarlyStartupRunnable.run(EarlyStartupRunnable.java:55)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.ui.internal.Workbench$39.run(Workbench.java:2737)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: org.eclipse.core.internal.resources.ResourceException: Resource '/MDE Projet/Ecore/model/InitConfig/InitConfig.ecore' does not exist.
+	at org.eclipse.core.internal.resources.Resource.checkExists(Resource.java:367)
+	at org.eclipse.core.internal.resources.Resource.checkAccessible(Resource.java:241)
+	at org.eclipse.core.internal.resources.File.getContents(File.java:296)
+	at org.eclipse.core.internal.resources.File.getContents(File.java:289)
+	at org.eclipse.emf.ecore.resource.impl.PlatformResourceURIHandlerImpl$WorkbenchHelper.createPlatformResourceInputStream(PlatformResourceURIHandlerImpl.java:209)
+	... 14 more
+Caused by: java.lang.Exception: Resource '/MDE Projet/Ecore/model/InitConfig/InitConfig.ecore' does not exist.
+	at org.eclipse.core.internal.resources.ResourceException.provideStackTrace(ResourceException.java:42)
+	at org.eclipse.core.internal.resources.ResourceException.<init>(ResourceException.java:38)
+	... 19 more
