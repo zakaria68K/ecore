@@ -16,4 +16,7 @@
     <fullyQualifiedTypeName name="projectsortie.config"/>
     <fullyQualifiedTypeName name="java.io.InputStream"/>
     <fullyQualifiedTypeName name="java.net.HttpURLConnection"/>
+    <fullyQualifiedTypeName name="kong.unirest.core.JsonNode"/>
+    <fullyQualifiedTypeName name="kong.unirest.core.UnirestException"/>
+    <fullyQualifiedTypeName name="kong.unirest.core.Unirest"/>
 </qualifiedTypeNameHistroy>

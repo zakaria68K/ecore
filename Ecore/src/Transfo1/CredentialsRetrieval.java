@@ -1,15 +1,12 @@
 package Transfo1;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
+import java.io.InputStream;
 import java.net.URL;
-import java.util.Base64;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
 
-import kong.unirest.core.JsonNode;
-import kong.unirest.core.Unirest;
-import kong.unirest.core.UnirestException;
 public class CredentialsRetrieval {
 
     public static void main(String[] args) {
@@ -19,38 +16,24 @@ public class CredentialsRetrieval {
         try {
             String pomContent = getPomContent(owner, repository);
             System.out.println("pom.xml Content:\n" + pomContent);
-        } catch (UnirestException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    private static String getPomContent(String owner, String repository) throws UnirestException {
-        String apiUrl = "https://api.github.com/repos/" + owner + "/" + repository + "/contents/pom.xml?ref=master";
+    private static String getPomContent(String owner, String repository) throws IOException {
+        String apiUrl = "https://raw.githubusercontent.com/" + owner + "/" + repository + "/master/pom.xml";
 
-        JsonNode jsonResponse = Unirest.get(apiUrl)
-                .header("Accept", "application/vnd.github.v3+json")
-                .asJson()
-                .getBody();
+        // Create a temporary file to store the content
+        Path tempFile = Files.createTempFile("pom", ".xml");
 
-        return extractContent(jsonResponse.toString());
-    }
-
-    private static String extractContent(String jsonResponse) {
-        String base64Content = jsonResponse.substring(jsonResponse.indexOf("\"content\":\"") + 11, jsonResponse.indexOf("\",\"encoding\":\"base64\""));
-
-        // Remove non-base64 characters
-        base64Content = base64Content.replaceAll("[^A-Za-z0-9+/=]", "");
-
-        // Add padding if needed
-        int padding = (4 - base64Content.length() % 4) % 4;
-        base64Content = base64Content + "=".repeat(padding);
-
-        try {
-            byte[] decodedBytes = Base64.getDecoder().decode(base64Content);
-            return new String(decodedBytes);
-        } catch (IllegalArgumentException e) {
-            System.err.println("Error decoding base64 content: " + e.getMessage());
-            return "Error decoding base64 content";
+        try (InputStream in = new URL(apiUrl).openStream()) {
+            // Copy content from URL to the temporary file
+            Files.copy(in, tempFile, StandardCopyOption.REPLACE_EXISTING);
         }
+
+        // Read the content of the temporary file
+        byte[] encodedBytes = Files.readAllBytes(tempFile);
+        return new String(encodedBytes);
     }
 }
