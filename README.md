@@ -39,6 +39,20 @@ Prenons un moment pour comprendre les étapes nécessaires pour tirer le meilleu
 - Spécifier les besoins de l'infrastructure voulue.
 
   
+  
+  
+  
+  #### Exigences du projet en entrée
+  
+  - Les tests sont regroupés dans un répertoire nommé `tests`.
+  
+  - Le token de Jenkins Api doit être placé dans ce fichier `/ressources/config.properties` , nommé par la suite **jenkins.api.token**.
+  
+  - Le répertoire doit être public.
+  
+    
+  
+  
 
 
 
