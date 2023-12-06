@@ -61,14 +61,28 @@ public class Manip1 {
         EAttribute branchFeature = (EAttribute) cloningClass.getEStructuralFeature("branch");
         cloningObject.eSet(branchFeature, MRacine.eGet(((EClass) MMePackage.getEClassifier("Projet")).getEStructuralFeature("branch")));
         ((EList<EObject>) outputModelRoot.eGet(((EClass) MMSePackage.getEClassifier("config")).getEStructuralFeature("stages"))).add(cloningObject);
+        
+     // Projet.url to Cloning.url
+        
+        EAttribute urlFeature = (EAttribute) cloningClass.getEStructuralFeature("url");
+        cloningObject.eSet(urlFeature, MRacine.eGet(((EClass) MMePackage.getEClassifier("Projet")).getEStructuralFeature("url"))+ ".git");
+        ((EList<EObject>) outputModelRoot.eGet(((EClass) MMSePackage.getEClassifier("config")).getEStructuralFeature("stages"))).add(cloningObject);
+        
+        
+      // Default value for Cloning.credentialID
+
+        EAttribute credentialIDFeature = (EAttribute) cloningClass.getEStructuralFeature("credentialID");
+        cloningObject.eSet(credentialIDFeature, "personal-cloning-key");
+        ((EList<EObject>) outputModelRoot.eGet(((EClass) MMSePackage.getEClassifier("config")).getEStructuralFeature("stages"))).add(cloningObject);
+        
 
      // Projet.url to Cloning.url
-        EClass cloningClassUrl = (EClass) MMSePackage.getEClassifier("Cloning");
-        EObject cloningObjectUrl = MMSePackage.getEFactoryInstance().create(cloningClassUrl);
-        EAttribute urlFeature = (EAttribute) cloningClassUrl.getEStructuralFeature("url");
-        cloningObjectUrl.eSet(urlFeature, MRacine.eGet(((EClass) MMePackage.getEClassifier("Projet")).getEStructuralFeature("url")));
-        ((EList<EObject>) outputModelRoot.eGet(((EClass) MMSePackage.getEClassifier("config")).getEStructuralFeature("stages"))).add(cloningObjectUrl);
-        
+//        EClass cloningClassUrl = (EClass) MMSePackage.getEClassifier("Cloning");
+//        EObject cloningObjectUrl = MMSePackage.getEFactoryInstance().create(cloningClassUrl);
+//        EAttribute urlFeature = (EAttribute) cloningClassUrl.getEStructuralFeature("url");
+//        cloningObjectUrl.eSet(urlFeature, MRacine.eGet(((EClass) MMePackage.getEClassifier("Projet")).getEStructuralFeature("url")));
+//        ((EList<EObject>) outputModelRoot.eGet(((EClass) MMSePackage.getEClassifier("config")).getEStructuralFeature("stages"))).add(cloningObjectUrl);
+//        
         // Testing.cmdtest to Tests.shell
         
         
@@ -100,13 +114,6 @@ public class Manip1 {
 
         // Default values
 
-        // Default value for Cloning.credentialID
-        EClass cloningClassCredential = (EClass) MMSePackage.getEClassifier("Cloning");
-        EObject cloningObjectCredential = MMSePackage.getEFactoryInstance().create(cloningClassCredential);
-        EAttribute credentialIDFeature = (EAttribute) cloningClassCredential.getEStructuralFeature("credentialID");
-        cloningObjectCredential.eSet(credentialIDFeature, "personal-cloning-key");
-        ((EList<EObject>) outputModelRoot.eGet(((EClass) MMSePackage.getEClassifier("config")).getEStructuralFeature("stages"))).add(cloningObjectCredential);
-
         // Default value for Build.cmd
         EClass buildClassCmd = (EClass) MMSePackage.getEClassifier("Build");
         EObject buildObjectCmd = MMSePackage.getEFactoryInstance().create(buildClassCmd);
@@ -131,7 +138,7 @@ public class Manip1 {
      agentObject.eSet(typeFeature, "docker");
      outputModelRoot.eSet(((EClass) MMSePackage.getEClassifier("config")).getEStructuralFeature("agent"), agentObject);
 
-        
+     
         
         // Save Output Model:
         Resource outputModelResource = resourceSet.createResource(URI.createFileURI("C:/Users/zakar/eclipse-workspace/Ecore/model/Output.model"));
