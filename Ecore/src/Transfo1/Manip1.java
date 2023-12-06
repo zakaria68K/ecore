@@ -120,8 +120,19 @@ public class Manip1 {
         EAttribute cmdDeployFeature = (EAttribute) deployClassCmd.getEStructuralFeature("cmd");
         deployObjectCmd.eSet(cmdDeployFeature, "sh \"docker push ${dockerImageTag}\"");
         ((EList<EObject>) outputModelRoot.eGet(((EClass) MMSePackage.getEClassifier("config")).getEStructuralFeature("stages"))).add(deployObjectCmd);
+        
 
+     // default value of the principal
 
+     // Default value for Config.agent
+     EClass agentClass = (EClass) MMSePackage.getEClassifier("Agent");
+     EObject agentObject = MMSePackage.getEFactoryInstance().create(agentClass);
+     EAttribute typeFeature = (EAttribute) agentClass.getEStructuralFeature("type");
+     agentObject.eSet(typeFeature, "docker");
+     outputModelRoot.eSet(((EClass) MMSePackage.getEClassifier("config")).getEStructuralFeature("agent"), agentObject);
+
+        
+        
         // Save Output Model:
         Resource outputModelResource = resourceSet.createResource(URI.createFileURI("C:/Users/zakar/eclipse-workspace/Ecore/model/Output.model"));
         outputModelResource.getContents().add(outputModelRoot);
