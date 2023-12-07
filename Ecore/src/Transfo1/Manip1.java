@@ -2,6 +2,7 @@ package Transfo1;
 
 import java.io.IOException;
 import java.util.Collections;
+import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
@@ -21,6 +22,15 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 public class Manip1 {
 
     public static void main(String[] args) {
+        // Create an instance of ClassesToTestRetrieval
+        ClassesToTestRetrieval classesRetrieval = new ClassesToTestRetrieval();
+
+        // Get the list of file names from ClassesToTestRetrieval
+      
+        String classestotest =   String.join(", ", classesRetrieval.retrieveFileNames());
+        
+
+
         // Register the XMI resource factory for the EMF resource set
         Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("*", new XMIResourceFactoryImpl());
 
@@ -54,7 +64,8 @@ public class Manip1 {
         // Projet.name to Config.name
         setFeatureValue(outputModelRoot, MMSePackage, "config", "name", MRacine, MMePackage, "Projet", "name");
 
-    
+//Cloning Stage
+        
      // Projet.branch to Cloning.branch
         EClass cloningClass = (EClass) MMSePackage.getEClassifier("Cloning");
         EObject cloningObject = MMSePackage.getEFactoryInstance().create(cloningClass);
@@ -62,7 +73,7 @@ public class Manip1 {
         cloningObject.eSet(branchFeature, MRacine.eGet(((EClass) MMePackage.getEClassifier("Projet")).getEStructuralFeature("branch")));
         ((EList<EObject>) outputModelRoot.eGet(((EClass) MMSePackage.getEClassifier("config")).getEStructuralFeature("stages"))).add(cloningObject);
         
-     // Projet.url to Cloning.url
+     // Projet.url + .git to Cloning.url
         
         EAttribute urlFeature = (EAttribute) cloningClass.getEStructuralFeature("url");
         cloningObject.eSet(urlFeature, MRacine.eGet(((EClass) MMePackage.getEClassifier("Projet")).getEStructuralFeature("url"))+ ".git");
@@ -76,16 +87,10 @@ public class Manip1 {
         ((EList<EObject>) outputModelRoot.eGet(((EClass) MMSePackage.getEClassifier("config")).getEStructuralFeature("stages"))).add(cloningObject);
         
 
-     // Projet.url to Cloning.url
-//        EClass cloningClassUrl = (EClass) MMSePackage.getEClassifier("Cloning");
-//        EObject cloningObjectUrl = MMSePackage.getEFactoryInstance().create(cloningClassUrl);
-//        EAttribute urlFeature = (EAttribute) cloningClassUrl.getEStructuralFeature("url");
-//        cloningObjectUrl.eSet(urlFeature, MRacine.eGet(((EClass) MMePackage.getEClassifier("Projet")).getEStructuralFeature("url")));
-//        ((EList<EObject>) outputModelRoot.eGet(((EClass) MMSePackage.getEClassifier("config")).getEStructuralFeature("stages"))).add(cloningObjectUrl);
-//        
+//Testing Stage
+      
         // Testing.cmdtest to Tests.shell
-        
-        
+         
         EObject rootObject = MRacine;
         // Iterate through all elements
         TreeIterator<Object> iterator = EcoreUtil.getAllContents(Collections.singletonList(rootObject));
@@ -102,14 +107,22 @@ public class Manip1 {
                    	EClass testsClassShell = (EClass) MMSePackage.getEClassifier("Tests");
                     EObject testsObjectShell = MMSePackage.getEFactoryInstance().create(testsClassShell);
                     EAttribute shellFeature = (EAttribute) testsClassShell.getEStructuralFeature("shell");
+                    EAttribute classFeature = (EAttribute) testsClassShell.getEStructuralFeature("classestotest");
+
                     // MRacine.eGet(((EClass) MMePackage.getEClassifier("Testing")).getEStructuralFeature("Cmdtest"))
                     testsObjectShell.eSet(shellFeature, cmdTesting);
+                    testsObjectShell.eSet(classFeature,classestotest );
+
                     ((EList<EObject>) outputModelRoot.eGet(((EClass) MMSePackage.getEClassifier("config")).getEStructuralFeature("stages"))).add(testsObjectShell);
                     
                     }
                 }
             }
         }
+        
+        
+        //testing.ClassesToTest to classestotest
+        
           
 
         // Default values
@@ -138,7 +151,9 @@ public class Manip1 {
      agentObject.eSet(typeFeature, "docker");
      outputModelRoot.eSet(((EClass) MMSePackage.getEClassifier("config")).getEStructuralFeature("agent"), agentObject);
 
+     //tests
      
+
         
         // Save Output Model:
         Resource outputModelResource = resourceSet.createResource(URI.createFileURI("C:/Users/zakar/eclipse-workspace/Ecore/model/Output.model"));
@@ -150,6 +165,7 @@ public class Manip1 {
         }
         printEObject(outputModelRoot,0);
     }
+    
 
     private static void setFeatureValue(EObject targetObject, EPackage targetPackage, String targetClassName, String targetFeatureName,
             EObject sourceObject, EPackage sourcePackage, String sourceClassName, String sourceFeatureName) {

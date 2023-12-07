@@ -19,4 +19,5 @@
     <fullyQualifiedTypeName name="kong.unirest.core.JsonNode"/>
     <fullyQualifiedTypeName name="kong.unirest.core.UnirestException"/>
     <fullyQualifiedTypeName name="kong.unirest.core.Unirest"/>
+    <fullyQualifiedTypeName name="Transfo1.ClassesToTestRetrieval"/>
 </qualifiedTypeNameHistroy>
