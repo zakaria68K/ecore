@@ -10,7 +10,6 @@
     <fullyQualifiedTypeName name="org.eclipse.emf.ecore.EAttribute"/>
     <fullyQualifiedTypeName name="org.eclipse.emf.ecore.EClass"/>
     <fullyQualifiedTypeName name="org.eclipse.emf.common.util.TreeIterator"/>
-    <fullyQualifiedTypeName name="java.util.Collections"/>
     <fullyQualifiedTypeName name="org.eclipse.emf.ecore.util.EcoreUtil"/>
     <fullyQualifiedTypeName name="mymetamodel.Testing"/>
     <fullyQualifiedTypeName name="projectsortie.config"/>
@@ -20,4 +19,6 @@
     <fullyQualifiedTypeName name="kong.unirest.core.UnirestException"/>
     <fullyQualifiedTypeName name="kong.unirest.core.Unirest"/>
     <fullyQualifiedTypeName name="Transfo1.ClassesToTestRetrieval"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="java.util.Collections"/>
 </qualifiedTypeNameHistroy>

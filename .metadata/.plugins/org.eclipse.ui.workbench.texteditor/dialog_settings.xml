@@ -8,6 +8,7 @@
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="File Names:"/>
 			<item value="111d20e9b28c200f5f6902481c15ebf5ca"/>
 			<item value="cmdtest"/>
 			<item value="target"/>
