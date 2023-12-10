@@ -23,7 +23,12 @@ def dockerImageTag = "${[name/]:${env.BUILD_NUMBER}"
 
 
 stage('Run integration & unit tests') {
-      
+       withCredentials([ '[' /] 
+        string(credentialsId: 'test-database-url', variable: 'TEST_DATABASE_URL'),
+        string(credentialsId: 'test-database-username', variable: 'TEST_DATABASE_USERNAME'),
+        string(credentialsId: 'test-database-password', variable: 'TEST_DATABASE_PASSWORD')
+      [ ']' /] )
+
      [for (className : EString | stages.tests.classestotest.tokenize(' '))]
           sh "./mvnw test -Dspring.profiles.active=prod -Dspring.datasource.url=$TEST_DATABASE_URL -Dspring.datasource.username=$TEST_DATABASE_USERNAME -Dspring.datasource.password=$TEST_DATABASE_PASSWORD -Dtest=\"[className/]""
         [/for]
