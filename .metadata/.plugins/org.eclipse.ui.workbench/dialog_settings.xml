@@ -1,19 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="NewWizardAction">
-		<item key="NewWizardSelectionPage.STORE_SELECTED_ID" value="org.eclipse.jdt.ui.wizards.NewClassCreationWizard"/>
+		<item key="NewWizardSelectionPage.STORE_SELECTED_ID" value="org.eclipse.acceleo.ide.ui.wizards.newfile.AcceleoModuleWizard"/>
 		<list key="NewWizardSelectionPage.STORE_EXPANDED_CATEGORIES_ID">
-			<item value="org.eclipse.emf.codegen.ecore.ui.wizardCategory"/>
-			<item value="org.eclipse.jdt.ui.java"/>
-			<item value="org.eclipse.jdt.ui.java/org.eclipse.jdt.debug.ui.java"/>
-			<item value="org.eclipse.jdt.ui.java/org.eclipse.jdt.junit"/>
-			<item value="org.eclipse.emf.codegen.ui.JETNewWizards"/>
-			<item value="org.eclipse.xtend.ide.wizards"/>
+			<item value="org.eclipse.acceleo.ide.ui"/>
 			<item value="org.eclipse.ui.Examples"/>
-			<item value="org.eclipse.ui.Examples/org.eclipse.emf.cdo.examples"/>
-			<item value="org.eclipse.ui.Examples/org.eclipse.emf.examples.EMF"/>
-			<item value="org.eclipse.ui.Examples/org.eclipse.epsilon.common.dt.examples"/>
-			<item value="org.eclipse.ui.Examples/org.eclipse.xtend.ui.Examples"/>
+			<item value="org.eclipse.ui.Examples/org.eclipse.acceleo.examples.category"/>
 		</list>
 	</section>
 	<section name="EditorSelectionDialog">
