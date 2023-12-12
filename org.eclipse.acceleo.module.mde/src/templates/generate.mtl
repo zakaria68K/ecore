@@ -6,7 +6,7 @@
 [/file][/comment]
 
 		node {
-	agent {
+	agent 
 	  docker { image config.agent.type }
  }
 

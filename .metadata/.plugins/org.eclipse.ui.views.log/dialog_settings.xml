@@ -9,4 +9,13 @@
 		<item key="error" value="true"/>
 		<item key="allSessions" value="true"/>
 	</section>
+	<section name="org.eclipse.ui.internal.views.log.EventDetailsDialog">
+		<item key="x" value="-11"/>
+		<item key="y" value="-11"/>
+		<item key="width" value="1942"/>
+		<item key="height" value="1030"/>
+		<item key="sashWidth1" value="246"/>
+		<item key="sashWidth2" value="507"/>
+		<item key="sashWidth3" value="246"/>
+	</section>
 </section>

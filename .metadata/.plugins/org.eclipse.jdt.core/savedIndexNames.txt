@@ -86,16 +86,16 @@ INDEX VERSION 1.134+C:\Users\zakar\eclipse-workspace\.metadata\.plugins\org.ecli
 4079926062.index
 3904244610.index
 3925639674.index
-3962856800.index
 447758232.index
+3962856800.index
 2746705845.index
-1750953964.index
 558299224.index
 2045283009.index
 4047723893.index
 1357978991.index
 367452632.index
 3481108686.index
+1750953964.index
 1040447492.index
 2312424914.index
 2573080539.index
@@ -105,7 +105,6 @@ INDEX VERSION 1.134+C:\Users\zakar\eclipse-workspace\.metadata\.plugins\org.ecli
 1425537917.index
 3780478170.index
 211803544.index
-2844935116.index
 663124928.index
 2411620476.index
 2670840086.index

@@ -20,7 +20,7 @@ En utilisant des concepts avancées de MDE, nous allons automatiser des tâches 
 
 **Itération 3:** Création d'une **infrastructure** pour le déploiement, cette itération assure que l'application est prête à affronter les défis avec une infrastructure évolutive.
 
-![image-20231121234218017](./images/diagram.png)
+![image-20231121234218017](./images/diagram1.png)
 
 #### Comment ça fonctionne
 
