@@ -73,7 +73,7 @@ public class Manip1 {
         cloningObject.eSet(branchFeature, MRacine.eGet(((EClass) MMePackage.getEClassifier("Projet")).getEStructuralFeature("branch")));
         ((EList<EObject>) outputModelRoot.eGet(((EClass) MMSePackage.getEClassifier("config")).getEStructuralFeature("stages"))).add(cloningObject);
         
-     // Projet.url + .git to Cloning.url
+     // Projet.url + '.git' to Cloning.url
         
         EAttribute urlFeature = (EAttribute) cloningClass.getEStructuralFeature("url");
         cloningObject.eSet(urlFeature, MRacine.eGet(((EClass) MMePackage.getEClassifier("Projet")).getEStructuralFeature("url"))+ ".git");
@@ -199,7 +199,7 @@ public class Manip1 {
         targetObject.eSet(targetFeature, value);
     }
 
-     //printEObject(outputModelRoot, 0);
+
     
 
     private static void printEObject(EObject eObject, int indent) {

@@ -1,9 +1,8 @@
 [comment encoding = UTF-8 /]
+[comment @main /]
 [module main('http://ezdevops2.0com', 'http://www.eclipse.org/emf/2002/Ecore')]
 
 [template public main(config : projectsortie::config)]
-[comment][file ('JenkinsFile', false, 'UTF-8')]	
-[/file][/comment]
 
 		node {
 	agent 
