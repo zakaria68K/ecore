@@ -1,0 +1,662 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:mtl="http://www.eclipse.org/acceleo/mtl/3.0" xmlns:ocl.ecore="http://www.eclipse.org/ocl/1.1.0/Ecore">
+  <mtl:Module name="generate" nsURI="templates::generate" startHeaderPosition="30" endHeaderPosition="352">
+    <input>
+      <takesTypesFrom href="http://ezdevops2.0com#/"/>
+    </input>
+    <input>
+      <takesTypesFrom href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+    </input>
+    <ownedModuleElement xsi:type="mtl:Template" name="generateJenkinsFile" visibility="Public">
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xD;&#xA;&#x9;&#x9;node {&#xD;&#xA;&#x9;agent &#xD;&#xA;&#x9;  docker { image config.agent.type }&#xD;&#xA; }&#xD;&#xA;&#xD;&#xA;def dockerImageTag = &quot;${"/>
+      <body xsi:type="ocl.ecore:PropertyCallExp">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/6">
+          <eType xsi:type="ecore:EClass" href="http://ezdevops2.0com#//config"/>
+        </source>
+        <referredProperty xsi:type="ecore:EAttribute" href="http://ezdevops2.0com#//config/name"/>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=":${env.BUILD_NUMBER}&quot;&#xD;&#xA;&#xD;&#xA;  try {&#xD;&#xA;    notifyBuild('STARTED')&#xD;&#xA;&#xD;&#xA;    stage('Clone repository') {&#xD;&#xA;      git url:"/>
+      <body xsi:type="ocl.ecore:IteratorExp" name="collect" eType="/7/Sequence(String)">
+        <source xsi:type="ocl.ecore:IteratorExp" name="collect" eType="/7/Sequence(Cloning)">
+          <source xsi:type="ocl.ecore:PropertyCallExp" eType="/7/OrderedSet(Stages)">
+            <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/8">
+              <eType xsi:type="ecore:EClass" href="http://ezdevops2.0com#//config"/>
+            </source>
+            <referredProperty xsi:type="ecore:EReference" href="http://ezdevops2.0com#//config/stages"/>
+          </source>
+          <body xsi:type="ocl.ecore:PropertyCallExp">
+            <eType xsi:type="ecore:EClass" href="http://ezdevops2.0com#//Cloning"/>
+            <source xsi:type="ocl.ecore:VariableExp" name="temp1" referredVariable="/0/generateJenkinsFile/collect/collect/temp1">
+              <eType xsi:type="ecore:EClass" href="http://ezdevops2.0com#//Stages"/>
+            </source>
+            <referredProperty xsi:type="ecore:EReference" href="http://ezdevops2.0com#//Stages/cloning"/>
+          </body>
+          <iterator xsi:type="ocl.ecore:Variable" name="temp1">
+            <eType xsi:type="ecore:EClass" href="http://ezdevops2.0com#//Stages"/>
+          </iterator>
+        </source>
+        <body xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="temp2" referredVariable="/0/generateJenkinsFile/collect/temp2">
+            <eType xsi:type="ecore:EClass" href="http://ezdevops2.0com#//Cloning"/>
+          </source>
+          <referredProperty xsi:type="ecore:EAttribute" href="http://ezdevops2.0com#//Cloning/url"/>
+        </body>
+        <iterator xsi:type="ocl.ecore:Variable" name="temp2">
+          <eType xsi:type="ecore:EClass" href="http://ezdevops2.0com#//Cloning"/>
+        </iterator>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=",&#xD;&#xA;          credentialsId:"/>
+      <body xsi:type="ocl.ecore:IteratorExp" name="collect" eType="/7/Sequence(String)">
+        <source xsi:type="ocl.ecore:IteratorExp" name="collect" eType="/7/Sequence(Cloning)">
+          <source xsi:type="ocl.ecore:PropertyCallExp" eType="/7/OrderedSet(Stages)">
+            <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/9">
+              <eType xsi:type="ecore:EClass" href="http://ezdevops2.0com#//config"/>
+            </source>
+            <referredProperty xsi:type="ecore:EReference" href="http://ezdevops2.0com#//config/stages"/>
+          </source>
+          <body xsi:type="ocl.ecore:PropertyCallExp">
+            <eType xsi:type="ecore:EClass" href="http://ezdevops2.0com#//Cloning"/>
+            <source xsi:type="ocl.ecore:VariableExp" name="temp1" referredVariable="/0/generateJenkinsFile/collect.1/collect/temp3">
+              <eType xsi:type="ecore:EClass" href="http://ezdevops2.0com#//Stages"/>
+            </source>
+            <referredProperty xsi:type="ecore:EReference" href="http://ezdevops2.0com#//Stages/cloning"/>
+          </body>
+          <iterator xsi:type="ocl.ecore:Variable" name="temp3">
+            <eType xsi:type="ecore:EClass" href="http://ezdevops2.0com#//Stages"/>
+          </iterator>
+        </source>
+        <body xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="temp2" referredVariable="/0/generateJenkinsFile/collect.1/temp4">
+            <eType xsi:type="ecore:EClass" href="http://ezdevops2.0com#//Cloning"/>
+          </source>
+          <referredProperty xsi:type="ecore:EAttribute" href="http://ezdevops2.0com#//Cloning/credentialID"/>
+        </body>
+        <iterator xsi:type="ocl.ecore:Variable" name="temp4">
+          <eType xsi:type="ecore:EClass" href="http://ezdevops2.0com#//Cloning"/>
+        </iterator>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=",&#xD;&#xA;          branch:"/>
+      <body xsi:type="ocl.ecore:IteratorExp" name="collect" eType="/7/Sequence(String)">
+        <source xsi:type="ocl.ecore:IteratorExp" name="collect" eType="/7/Sequence(Cloning)">
+          <source xsi:type="ocl.ecore:PropertyCallExp" eType="/7/OrderedSet(Stages)">
+            <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/10">
+              <eType xsi:type="ecore:EClass" href="http://ezdevops2.0com#//config"/>
+            </source>
+            <referredProperty xsi:type="ecore:EReference" href="http://ezdevops2.0com#//config/stages"/>
+          </source>
+          <body xsi:type="ocl.ecore:PropertyCallExp">
+            <eType xsi:type="ecore:EClass" href="http://ezdevops2.0com#//Cloning"/>
+            <source xsi:type="ocl.ecore:VariableExp" name="temp1" referredVariable="/0/generateJenkinsFile/collect.2/collect/temp5">
+              <eType xsi:type="ecore:EClass" href="http://ezdevops2.0com#//Stages"/>
+            </source>
+            <referredProperty xsi:type="ecore:EReference" href="http://ezdevops2.0com#//Stages/cloning"/>
+          </body>
+          <iterator xsi:type="ocl.ecore:Variable" name="temp5">
+            <eType xsi:type="ecore:EClass" href="http://ezdevops2.0com#//Stages"/>
+          </iterator>
+        </source>
+        <body xsi:type="ocl.ecore:PropertyCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="temp2" referredVariable="/0/generateJenkinsFile/collect.2/temp6">
+            <eType xsi:type="ecore:EClass" href="http://ezdevops2.0com#//Cloning"/>
+          </source>
+          <referredProperty xsi:type="ecore:EAttribute" href="http://ezdevops2.0com#//Cloning/branch"/>
+        </body>
+        <iterator xsi:type="ocl.ecore:Variable" name="temp6">
+          <eType xsi:type="ecore:EClass" href="http://ezdevops2.0com#//Cloning"/>
+        </iterator>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xD;&#xA;    }&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;stage('Run integration &amp; unit tests') {&#xD;&#xA;       withCredentials("/>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" &#xD;&#xA;        string(credentialsId: 'test-database-url', variable: 'TEST_DATABASE_URL'),&#xD;&#xA;        string(credentialsId: 'test-database-username', variable: 'TEST_DATABASE_USERNAME'),&#xD;&#xA;        string(credentialsId: 'test-database-password', variable: 'TEST_DATABASE_PASSWORD')&#xD;&#xA;      "/>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="]">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" )&#xD;&#xA;&#xD;&#xA;"/>
+      <body xsi:type="mtl:ForBlock">
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="          sh &quot;./mvnw test -Dspring.profiles.active=prod -Dspring.datasource.url=$TEST_DATABASE_URL -Dspring.datasource.username=$TEST_DATABASE_USERNAME -Dspring.datasource.password=$TEST_DATABASE_PASSWORD -Dtest=\&quot;"/>
+        <body xsi:type="ocl.ecore:VariableExp" name="className" referredVariable="/0/generateJenkinsFile/%.10/className.1">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&quot;&quot;&#xD;&#xA;"/>
+        <loopVariable name="className">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </loopVariable>
+        <iterSet xsi:type="ocl.ecore:IteratorExp" name="collect" eType="/7/Sequence(String)">
+          <source xsi:type="ocl.ecore:IteratorExp" name="collect" eType="/7/Sequence(String)">
+            <source xsi:type="ocl.ecore:IteratorExp" name="collect" eType="/7/Sequence(Tests)">
+              <source xsi:type="ocl.ecore:PropertyCallExp" eType="/7/OrderedSet(Stages)">
+                <source xsi:type="ocl.ecore:VariableExp" name="self" referredVariable="/13">
+                  <eType xsi:type="ecore:EClass" href="http://ezdevops2.0com#//config"/>
+                </source>
+                <referredProperty xsi:type="ecore:EReference" href="http://ezdevops2.0com#//config/stages"/>
+              </source>
+              <body xsi:type="ocl.ecore:PropertyCallExp">
+                <eType xsi:type="ecore:EClass" href="http://ezdevops2.0com#//Tests"/>
+                <source xsi:type="ocl.ecore:VariableExp" name="temp1" referredVariable="/0/generateJenkinsFile/%.10/collect/collect/collect/temp7">
+                  <eType xsi:type="ecore:EClass" href="http://ezdevops2.0com#//Stages"/>
+                </source>
+                <referredProperty xsi:type="ecore:EReference" href="http://ezdevops2.0com#//Stages/tests"/>
+              </body>
+              <iterator xsi:type="ocl.ecore:Variable" name="temp7">
+                <eType xsi:type="ecore:EClass" href="http://ezdevops2.0com#//Stages"/>
+              </iterator>
+            </source>
+            <body xsi:type="ocl.ecore:PropertyCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:VariableExp" name="temp2" referredVariable="/0/generateJenkinsFile/%.10/collect/collect/temp8">
+                <eType xsi:type="ecore:EClass" href="http://ezdevops2.0com#//Tests"/>
+              </source>
+              <referredProperty xsi:type="ecore:EAttribute" href="http://ezdevops2.0com#//Tests/classestotest"/>
+            </body>
+            <iterator xsi:type="ocl.ecore:Variable" name="temp8">
+              <eType xsi:type="ecore:EClass" href="http://ezdevops2.0com#//Tests"/>
+            </iterator>
+          </source>
+          <body xsi:type="ocl.ecore:OperationCallExp" eType="/7/Sequence(String)" referredOperation="/1/oclstdlib_String_Class/tokenize">
+            <source xsi:type="ocl.ecore:VariableExp" name="temp3" referredVariable="/0/generateJenkinsFile/%.10/collect/temp9">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            </source>
+            <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" ">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            </argument>
+          </body>
+          <iterator xsi:type="ocl.ecore:Variable" name="temp9">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          </iterator>
+        </iterSet>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xD;&#xA;      }&#xD;&#xA;    }&#xD;&#xA;&#xD;&#xA;&#xD;&#xA; stage('Build Docker image') {&#xD;&#xA;      sh &quot;docker build -t ${dockerImageTag} .&quot;&#xD;&#xA;    }&#xD;&#xA;&#xD;&#xA; stage('Deploy Docker image') {&#xD;&#xA;      echo &quot;Docker Image Tag Name: ${dockerImageTag}&quot;&#xD;&#xA;      echo &quot;Logging in to Docker Hub...&quot;&#xD;&#xA;&#xD;&#xA;      withCredentials("/>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="[">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" &#xD;&#xA;        usernamePassword(credentialsId: 'dockerhub-creds', usernameVariable: 'DOCKERHUB_USERNAME', passwordVariable: 'DOCKERHUB_PASSWORD')&#xD;&#xA;      "/>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="]">
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" ) {&#xD;&#xA;        sh 'docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD'&#xD;&#xA;      }&#xD;&#xA;&#xD;&#xA;      echo &quot;Pushing image...&quot;&#xD;&#xA;      sh &quot;docker push ${dockerImageTag}&quot;&#xD;&#xA;    }&#xD;&#xA;  } finally {&#xD;&#xA;    notifyBuild('FINISHED')&#xD;&#xA;  }&#xD;&#xA;"/>
+      <parameter name="config">
+        <eType xsi:type="ecore:EClass" href="http://ezdevops2.0com#//config"/>
+      </parameter>
+    </ownedModuleElement>
+  </mtl:Module>
+  <ecore:EPackage name="additions">
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_String_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+      </eAnnotations>
+      <eOperations name="tokenize">
+        <eAnnotations source="MTL non-standard"/>
+        <eType xsi:type="ocl.ecore:SequenceType" href="http://www.eclipse.org/acceleo/mtl/3.0/mtlnonstdlib.ecore#//Sequence(String)"/>
+        <eParameters name="delimiters">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        </eParameters>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Integer_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Real_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Real"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ecore_EObject_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+      </eAnnotations>
+      <eOperations name="generateJenkinsFile">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL" references="/0/generateJenkinsFile"/>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="config">
+          <eType xsi:type="ecore:EClass" href="http://ezdevops2.0com#//config"/>
+        </eParameters>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_OclAny_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Collection(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Collection(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_Sequence(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="oclstdlib_OrderedSet(T)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OrderedSet(T)"/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="projectsortie_config_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://ezdevops2.0com#//config"/>
+      </eAnnotations>
+    </eClassifiers>
+  </ecore:EPackage>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://ezdevops2.0com#//config"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://ezdevops2.0com#//config"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://ezdevops2.0com#//config"/>
+  </ocl.ecore:Variable>
+  <ecore:EPackage name="collections">
+    <eClassifiers xsi:type="ocl.ecore:OrderedSetType" name="OrderedSet(Stages)" instanceClassName="java.util.LinkedHashSet">
+      <elementType xsi:type="ecore:EClass" href="http://ezdevops2.0com#//Stages"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:SequenceType" name="Sequence(Cloning)" instanceClassName="java.util.List">
+      <elementType xsi:type="ecore:EClass" href="http://ezdevops2.0com#//Cloning"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:SequenceType" name="Sequence(String)" instanceClassName="java.util.List">
+      <elementType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:SequenceType" name="Sequence(Tests)" instanceClassName="java.util.List">
+      <elementType xsi:type="ecore:EClass" href="http://ezdevops2.0com#//Tests"/>
+    </eClassifiers>
+  </ecore:EPackage>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://ezdevops2.0com#//config"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://ezdevops2.0com#//config"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://ezdevops2.0com#//config"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://ezdevops2.0com#//config"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://ezdevops2.0com#//config"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://ezdevops2.0com#//config"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://ezdevops2.0com#//config"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="i">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://ezdevops2.0com#//config"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://ezdevops2.0com#//config"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ecore:EAnnotation source="positions">
+    <eAnnotations source="positions.0" references="/0/generateJenkinsFile">
+      <details key="start" value="117"/>
+      <details key="end" value="1951"/>
+      <details key="line" value="4"/>
+    </eAnnotations>
+    <eAnnotations source="positions.1" references="/0/generateJenkinsFile/%">
+      <details key="start" value="257"/>
+      <details key="end" value="347"/>
+      <details key="line" value="7"/>
+    </eAnnotations>
+    <eAnnotations source="positions.2" references="/0/generateJenkinsFile/%.1">
+      <details key="start" value="348"/>
+      <details key="end" value="352"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.3" references="/0/generateJenkinsFile/%.1/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.4" references="/0/generateJenkinsFile/%.2">
+      <details key="start" value="354"/>
+      <details key="end" value="465"/>
+      <details key="line" value="13"/>
+    </eAnnotations>
+    <eAnnotations source="positions.5" references="/0/generateJenkinsFile/collect">
+      <details key="start" value="466"/>
+      <details key="end" value="484"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.6" references="/0/generateJenkinsFile/collect/collect">
+      <details key="start" value="466"/>
+      <details key="end" value="480"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.7" references="/0/generateJenkinsFile/collect/collect/%">
+      <details key="start" value="466"/>
+      <details key="end" value="472"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.8" references="/0/generateJenkinsFile/collect/collect/%/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.9" references="/0/generateJenkinsFile/collect/collect/%.1">
+      <details key="start" value="473"/>
+      <details key="end" value="480"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.10" references="/0/generateJenkinsFile/collect/collect/%.1/temp1">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.11" references="/0/generateJenkinsFile/collect/collect/temp1">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.12" references="/0/generateJenkinsFile/collect/%">
+      <details key="start" value="481"/>
+      <details key="end" value="484"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.13" references="/0/generateJenkinsFile/collect/%/temp2">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.14" references="/0/generateJenkinsFile/collect/temp2">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.15" references="/0/generateJenkinsFile/%.3">
+      <details key="start" value="486"/>
+      <details key="end" value="513"/>
+      <details key="line" value="19"/>
+    </eAnnotations>
+    <eAnnotations source="positions.16" references="/0/generateJenkinsFile/collect.1">
+      <details key="start" value="514"/>
+      <details key="end" value="541"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.17" references="/0/generateJenkinsFile/collect.1/collect">
+      <details key="start" value="514"/>
+      <details key="end" value="528"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.18" references="/0/generateJenkinsFile/collect.1/collect/%">
+      <details key="start" value="514"/>
+      <details key="end" value="520"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.19" references="/0/generateJenkinsFile/collect.1/collect/%/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.20" references="/0/generateJenkinsFile/collect.1/collect/%.1">
+      <details key="start" value="521"/>
+      <details key="end" value="528"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.21" references="/0/generateJenkinsFile/collect.1/collect/%.1/temp1">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.22" references="/0/generateJenkinsFile/collect.1/collect/temp3">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.23" references="/0/generateJenkinsFile/collect.1/%">
+      <details key="start" value="529"/>
+      <details key="end" value="541"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.24" references="/0/generateJenkinsFile/collect.1/%/temp2">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.25" references="/0/generateJenkinsFile/collect.1/temp4">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.26" references="/0/generateJenkinsFile/%.4">
+      <details key="start" value="543"/>
+      <details key="end" value="563"/>
+      <details key="line" value="20"/>
+    </eAnnotations>
+    <eAnnotations source="positions.27" references="/0/generateJenkinsFile/collect.2">
+      <details key="start" value="564"/>
+      <details key="end" value="585"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.28" references="/0/generateJenkinsFile/collect.2/collect">
+      <details key="start" value="564"/>
+      <details key="end" value="578"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.29" references="/0/generateJenkinsFile/collect.2/collect/%">
+      <details key="start" value="564"/>
+      <details key="end" value="570"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.30" references="/0/generateJenkinsFile/collect.2/collect/%/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.31" references="/0/generateJenkinsFile/collect.2/collect/%.1">
+      <details key="start" value="571"/>
+      <details key="end" value="578"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.32" references="/0/generateJenkinsFile/collect.2/collect/%.1/temp1">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.33" references="/0/generateJenkinsFile/collect.2/collect/temp5">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.34" references="/0/generateJenkinsFile/collect.2/%">
+      <details key="start" value="579"/>
+      <details key="end" value="585"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.35" references="/0/generateJenkinsFile/collect.2/%/temp2">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.36" references="/0/generateJenkinsFile/collect.2/temp6">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.37" references="/0/generateJenkinsFile/%.5">
+      <details key="start" value="587"/>
+      <details key="end" value="664"/>
+      <details key="line" value="22"/>
+    </eAnnotations>
+    <eAnnotations source="positions.38" references="/0/generateJenkinsFile/%.6">
+      <details key="start" value="666"/>
+      <details key="end" value="669"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.39" references="/0/generateJenkinsFile/%.7">
+      <details key="start" value="672"/>
+      <details key="end" value="952"/>
+      <details key="line" value="26"/>
+    </eAnnotations>
+    <eAnnotations source="positions.40" references="/0/generateJenkinsFile/%.8">
+      <details key="start" value="954"/>
+      <details key="end" value="957"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.41" references="/0/generateJenkinsFile/%.9">
+      <details key="start" value="960"/>
+      <details key="end" value="966"/>
+      <details key="line" value="30"/>
+    </eAnnotations>
+    <eAnnotations source="positions.42" references="/0/generateJenkinsFile/%.10">
+      <details key="start" value="971"/>
+      <details key="end" value="1287"/>
+      <details key="line" value="32"/>
+    </eAnnotations>
+    <eAnnotations source="positions.43" references="/0/generateJenkinsFile/%.10/%">
+      <details key="start" value="1043"/>
+      <details key="end" value="1257"/>
+      <details key="line" value="33"/>
+    </eAnnotations>
+    <eAnnotations source="positions.44" references="/0/generateJenkinsFile/%.10/className">
+      <details key="start" value="1258"/>
+      <details key="end" value="1267"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.45" references="/0/generateJenkinsFile/%.10/%.1">
+      <details key="start" value="1269"/>
+      <details key="end" value="1273"/>
+      <details key="line" value="33"/>
+    </eAnnotations>
+    <eAnnotations source="positions.46" references="/0/generateJenkinsFile/%.10/className.1">
+      <details key="start" value="977"/>
+      <details key="end" value="996"/>
+      <details key="line" value="32"/>
+    </eAnnotations>
+    <eAnnotations source="positions.47" references="/0/generateJenkinsFile/%.10/collect">
+      <details key="start" value="999"/>
+      <details key="end" value="1039"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.48" references="/0/generateJenkinsFile/%.10/collect/collect">
+      <details key="start" value="999"/>
+      <details key="end" value="1025"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.49" references="/0/generateJenkinsFile/%.10/collect/collect/collect">
+      <details key="start" value="999"/>
+      <details key="end" value="1011"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.50" references="/0/generateJenkinsFile/%.10/collect/collect/collect/%">
+      <details key="start" value="999"/>
+      <details key="end" value="1005"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.51" references="/0/generateJenkinsFile/%.10/collect/collect/collect/%/self">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.52" references="/0/generateJenkinsFile/%.10/collect/collect/collect/%.1">
+      <details key="start" value="1006"/>
+      <details key="end" value="1011"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.53" references="/0/generateJenkinsFile/%.10/collect/collect/collect/%.1/temp1">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.54" references="/0/generateJenkinsFile/%.10/collect/collect/collect/temp7">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.55" references="/0/generateJenkinsFile/%.10/collect/collect/%">
+      <details key="start" value="1012"/>
+      <details key="end" value="1025"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.56" references="/0/generateJenkinsFile/%.10/collect/collect/%/temp2">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.57" references="/0/generateJenkinsFile/%.10/collect/collect/temp8">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.58" references="/0/generateJenkinsFile/%.10/collect/%">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.59" references="/0/generateJenkinsFile/%.10/collect/%/temp3">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.60" references="/0/generateJenkinsFile/%.10/collect/%/%">
+      <details key="start" value="1035"/>
+      <details key="end" value="1038"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.61" references="/0/generateJenkinsFile/%.10/collect/temp9">
+      <details key="start" value="-1"/>
+      <details key="end" value="-1"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.62" references="/0/generateJenkinsFile/%.11">
+      <details key="start" value="1289"/>
+      <details key="end" value="1554"/>
+      <details key="line" value="35"/>
+    </eAnnotations>
+    <eAnnotations source="positions.63" references="/0/generateJenkinsFile/%.12">
+      <details key="start" value="1556"/>
+      <details key="end" value="1559"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.64" references="/0/generateJenkinsFile/%.13">
+      <details key="start" value="1562"/>
+      <details key="end" value="1711"/>
+      <details key="line" value="48"/>
+    </eAnnotations>
+    <eAnnotations source="positions.65" references="/0/generateJenkinsFile/%.14">
+      <details key="start" value="1713"/>
+      <details key="end" value="1716"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.66" references="/0/generateJenkinsFile/%.15">
+      <details key="start" value="1719"/>
+      <details key="end" value="1938"/>
+      <details key="line" value="50"/>
+    </eAnnotations>
+    <eAnnotations source="positions.67" references="/0/generateJenkinsFile/config">
+      <details key="start" value="154"/>
+      <details key="end" value="184"/>
+      <details key="line" value="4"/>
+    </eAnnotations>
+  </ecore:EAnnotation>
+</xmi:XMI>
