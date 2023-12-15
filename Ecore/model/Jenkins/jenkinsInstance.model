@@ -4,7 +4,7 @@
   <stages xmi:id="_8dXccIGcEe6RnNlCfrDVCQ" name="">
     <tests xmi:id="_WTvkkIGdEe6RnNlCfrDVCQ" shell="sh" classestotest="DocumentsControllerTest ComplaintsControllerTest SchoolZoneControllerTest ComplaintMappersTest">
       <credentials xmi:id="_h9QlYIGdEe6RnNlCfrDVCQ" name="Database Username" variable="TEST_DATABASE_USERNAME"/>
-      <credentia xmi:id="_or5noIGdEe6RnNlCfrDVCQ" name="Database Password" variable="TEST_DATABASE_PASSWORD"/>
+      <credentials xmi:id="_or5noIGdEe6RnNlCfrDVCQ" name="Database Password" variable="TEST_DATABASE_PASSWORD"/>
     </tests>
     <cloning xmi:id="_Rim7YIGeEe6RnNlCfrDVCQ" url="git@github.com:Zakaria.68K/SchoolMate.git" credentialID="personal-cloning-key" branch="main">
       <agent xmi:id="_gYyQAIGfEe6I0emwx6NUVQ" type="qlq chose"/>
