@@ -4,6 +4,8 @@
 
 [template public generateElement(aconfig : config)]
 [comment @main/]
+    [file('src/jenkinsFile', false, 'UTF-8')]
+
 		node {
 	agent 
 	  docker { image config.agent.type }
@@ -56,4 +58,6 @@ stage('Run integration & unit tests') {
   } finally {
     notifyBuild('FINISHED')
   }
+    [/file]
+
 [/template]
