@@ -199,7 +199,6 @@ public class Manip1 {
         targetObject.eSet(targetFeature, value);
     }
 
-
     
 
     private static void printEObject(EObject eObject, int indent) {
