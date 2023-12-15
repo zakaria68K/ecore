@@ -9,6 +9,8 @@
  *     Obeo - initial API and implementation
  *******************************************************************************/
 package org.eclipse.acceleo.module.sample;
+import org.eclipse.emf.ecore.EPackage;
+//import projectsortie.ProjectsortiePackage;
 
 import java.io.File;
 import java.io.IOException;
@@ -22,7 +24,9 @@ import org.eclipse.emf.common.util.BasicMonitor;
 import org.eclipse.emf.common.util.Monitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import projectsortie.ProjectsortiePackage;
 
 /**
  * Entry point of the 'Main' generation module.
@@ -339,9 +343,9 @@ public class Main extends AbstractAcceleoGenerator {
      */
     @Override
     public void registerPackages(ResourceSet resourceSet) {
-    	 super.registerPackages(resourceSet);
-         if (!isInWorkspace(org.eclipse.emf.ecore.EcorePackage.class)) {
-             resourceSet.getPackageRegistry().put(org.eclipse.emf.ecore.EcorePackage.eINSTANCE.getNsURI(), org.eclipse.emf.ecore.EcorePackage.eINSTANCE);}
+    	EPackage.Registry.INSTANCE.put("http://ezdevops2.0com", ProjectsortiePackage.eINSTANCE);
+
+        super.registerPackages(resourceSet);
         
         /*
          * If you want to change the content of this method, do NOT forget to change the "@generated"
