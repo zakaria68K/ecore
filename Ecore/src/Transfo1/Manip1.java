@@ -79,10 +79,18 @@ public class Manip1 {
 
         EAttribute credentialIDFeature = (EAttribute) cloningClass.getEStructuralFeature("credentialID");
         cloningObject.eSet(credentialIDFeature, "personal-cloning-key");
+        
         //transformation from the Projet branch to the cloning branch
+        
         EAttribute branchFeature = (EAttribute) cloningClass.getEStructuralFeature("branch");
         cloningObject.eSet(branchFeature, MRacine.eGet(((EClass) MMePackage.getEClassifier("Projet")).getEStructuralFeature("branch")));
         EReference stagesCloningReference = findContainmentReference(stagesClass, "cloning");
+        
+        // Projet.url + '.git' to Cloning.url
+        
+        EAttribute urlFeature = (EAttribute) cloningClass.getEStructuralFeature("url");
+        cloningObject.eSet(urlFeature, MRacine.eGet(((EClass) MMePackage.getEClassifier("Projet")).getEStructuralFeature("url"))+ ".git");
+        
         
         // Initialize the "cloning" feature if it's null
         EList<EObject> cloningList = (EList<EObject>) stagesObject.eGet(stagesCloningReference);
@@ -96,7 +104,72 @@ public class Manip1 {
         // Set cloningList to the "cloning" feature
         stagesObject.eSet(stagesCloningReference, cloningObject);
 
+       
+        
+//Testing Stage
+                       
+        
+        
+        
+        // Testing.cmdtest to Tests.shell
+        
+        EObject rootObject = MRacine;
+        // Iterate through all elements
+        TreeIterator<Object> iterator = EcoreUtil.getAllContents(Collections.singletonList(rootObject));
+        while (iterator.hasNext()) {
+            Object obj = iterator.next();
 
+            if (obj instanceof EObject) {
+                EObject eObject = (EObject) obj;
+                for (EStructuralFeature feature : eObject.eClass().getEAllStructuralFeatures()) {
+                    Object value = eObject.eGet(feature);
+                    if ("cmdtest".equals(feature.getName())) {
+                    
+                   	 String cmdTesting = value.toString();
+                   	EClass testsClassShell = (EClass) MMSePackage.getEClassifier("Tests");
+                    EObject testsObjectShell = MMSePackage.getEFactoryInstance().create(testsClassShell);
+                    EAttribute shellFeature = (EAttribute) testsClassShell.getEStructuralFeature("shell");
+                    EAttribute classFeature = (EAttribute) testsClassShell.getEStructuralFeature("classestotest");
+
+                    // MRacine.eGet(((EClass) MMePackage.getEClassifier("Testing")).getEStructuralFeature("Cmdtest"))
+                    testsObjectShell.eSet(shellFeature, cmdTesting);
+                    testsObjectShell.eSet(classFeature,classestotest );
+
+///heere                    
+                    // Initialize the "testing" feature if it's null
+                    EReference stagesTestingReference = findContainmentReference(stagesClass, "tests");
+
+                    EList<EObject> testingList = (EList<EObject>) stagesObject.eGet(stagesTestingReference);
+                    if (testingList == null) {
+                    	testingList = new BasicEList<>();
+                    }
+
+                    // Add cloningObject to cloningList
+                    testingList.add(testsObjectShell);
+
+                    // Set cloningList to the "cloning" feature
+                    stagesObject.eSet(stagesTestingReference, testsObjectShell);
+                    }
+                }
+            }
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         // Save Output Model:
         Resource outputModelResource = resourceSet.createResource(URI.createFileURI("C:/Users/zakar/eclipse-workspace/Ecore/model/Output.model"));
         outputModelResource.getContents().add(outputModelRoot);
