@@ -177,9 +177,27 @@ public class Manip1 {
         
    
         
+//Deploy stage
+        
+        EClass deployClassCmd = (EClass) MMSePackage.getEClassifier("Deploy");
+        EObject deployObjectCmd = MMSePackage.getEFactoryInstance().create(deployClassCmd);
+        EAttribute cmdDeployFeature = (EAttribute) deployClassCmd.getEStructuralFeature("cmd");
+        deployObjectCmd.eSet(cmdDeployFeature, "sh \"docker push ${dockerImageTag}\"");
+        
+EReference stagesdeployReference = findContainmentReference(stagesClass, "deploy");
         
         
-        
+        // Initialize the "deploy" feature if it's null
+        EList<EObject> deployList = (EList<EObject>) stagesObject.eGet(stagesdeployReference);
+        if (deployList == null) {
+        	deployList = new BasicEList<>();
+        }
+
+        // Add cloningObject to cloningList
+        deployList.add(deployObjectCmd);
+
+        // Set cloningList to the "cloning" feature
+        stagesObject.eSet(stagesdeployReference, deployObjectCmd);
         
         
         
