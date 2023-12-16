@@ -10,7 +10,7 @@ def dockerImageTag = "${:${env.BUILD_NUMBER}"
     notifyBuild('STARTED')
 
     stage('Clone repository') {
-      git url:"git@github.com:Zakaria.68K/SchoolMate.git",
+      git url:"https://github.com/monprojettestt.git",
           credentialsId: "personal-cloning-key",
           branch:"main"
     }
@@ -23,10 +23,10 @@ stage('Run integration & unit tests') {
         string(credentialsId: 'test-database-password', variable: 'TEST_DATABASE_PASSWORD')
       ] ) 
 
-          sh "./mvnw test -Dspring.profiles.active=prod -Dspring.datasource.url=$TEST_DATABASE_URL -Dspring.datasource.username=$TEST_DATABASE_USERNAME -Dspring.datasource.password=$TEST_DATABASE_PASSWORD -Dtest=\"DocumentsControllerTest""
-          sh "./mvnw test -Dspring.profiles.active=prod -Dspring.datasource.url=$TEST_DATABASE_URL -Dspring.datasource.username=$TEST_DATABASE_USERNAME -Dspring.datasource.password=$TEST_DATABASE_PASSWORD -Dtest=\"ComplaintsControllerTest""
-          sh "./mvnw test -Dspring.profiles.active=prod -Dspring.datasource.url=$TEST_DATABASE_URL -Dspring.datasource.username=$TEST_DATABASE_USERNAME -Dspring.datasource.password=$TEST_DATABASE_PASSWORD -Dtest=\"SchoolZoneControllerTest""
-          sh "./mvnw test -Dspring.profiles.active=prod -Dspring.datasource.url=$TEST_DATABASE_URL -Dspring.datasource.username=$TEST_DATABASE_USERNAME -Dspring.datasource.password=$TEST_DATABASE_PASSWORD -Dtest=\"ComplaintMappersTest""
+          sh "./mvnw test -Dspring.profiles.active=prod -Dspring.datasource.url=$TEST_DATABASE_URL -Dspring.datasource.username=$TEST_DATABASE_USERNAME -Dspring.datasource.password=$TEST_DATABASE_PASSWORD -Dtest=\"ClassesToTestRetrieval.java""
+          sh "./mvnw test -Dspring.profiles.active=prod -Dspring.datasource.url=$TEST_DATABASE_URL -Dspring.datasource.username=$TEST_DATABASE_USERNAME -Dspring.datasource.password=$TEST_DATABASE_PASSWORD -Dtest=\"CredentialsRetrieval.java""
+          sh "./mvnw test -Dspring.profiles.active=prod -Dspring.datasource.url=$TEST_DATABASE_URL -Dspring.datasource.username=$TEST_DATABASE_USERNAME -Dspring.datasource.password=$TEST_DATABASE_PASSWORD -Dtest=\"JenkinsCredentialRetrieval.java""
+          sh "./mvnw test -Dspring.profiles.active=prod -Dspring.datasource.url=$TEST_DATABASE_URL -Dspring.datasource.username=$TEST_DATABASE_USERNAME -Dspring.datasource.password=$TEST_DATABASE_PASSWORD -Dtest=\"Manip1.java""
 
 
       }
