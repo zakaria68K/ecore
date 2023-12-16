@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="ASCII"?>
-<hoho:config xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:hoho="http://ezdevops2.0com" name="mon projet">
-  <agent type="docker"/>
-  <stages xsi:type="hoho:Cloning" url="https://github.com/monprojettestt.git" credentialID="personal-cloning-key" branch="main"/>
-  <stages xsi:type="hoho:Tests" shell="mvn test" classestotest="ClassesToTestRetrieval.java, CredentialsRetrieval.java, JenkinsCredentialRetrieval.java, Manip1.java"/>
-  <stages xsi:type="hoho:Build" cmd="sh &quot;docker build -t ${dockerImageTag} .&quot;"/>
-  <stages xsi:type="hoho:Deploy" cmd="sh &quot;docker push ${dockerImageTag}&quot;"/>
+<hoho:config xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:hoho="http://ezdevops2.0com">
+  <stages name="Vos 4 stages...">
+    <cloning credentialID="personal-cloning-key"/>
+  </stages>
 </hoho:config>

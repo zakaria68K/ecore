@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 
+import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
@@ -60,105 +61,39 @@ public class Manip1 {
        
         //  Stages
         EClass stagesClass = (EClass) MMSePackage.getEClassifier("Stages");
-        EObject stagesObjectt = MMSePackage.getEFactoryInstance().create(stagesClass);
+        EObject stagesObject = MMSePackage.getEFactoryInstance().create(stagesClass);
 
-   
+        ((EList<EObject>) outputModelRoot.eGet(((EClass) MMSePackage.getEClassifier("config")).getEStructuralFeature("stages"))).add(stagesObject);
+        
+
+        EAttribute nameFeature = (EAttribute) stagesClass.getEStructuralFeature("name");
+        stagesObject.eSet(nameFeature, "Vos 4 stages...");
+        ((EList<EObject>) outputModelRoot.eGet(((EClass) MMSePackage.getEClassifier("config")).getEStructuralFeature("stages"))).add(stagesObject);
+        
+
         // Transformation rules
         
-        // Projet.name to Config.name
-        setFeatureValue(outputModelRoot, MMSePackage, "config", "name", MRacine, MMePackage, "Projet", "name");
-
-//Cloning Stage
-        
-     // Projet.branch to Cloning.branch
+        //Creating the conform cloning child of stages 'first attribute'
         EClass cloningClass = (EClass) MMSePackage.getEClassifier("Cloning");
         EObject cloningObject = MMSePackage.getEFactoryInstance().create(cloningClass);
-        EAttribute branchFeature = (EAttribute) cloningClass.getEStructuralFeature("branch");
-        cloningObject.eSet(branchFeature, MRacine.eGet(((EClass) MMePackage.getEClassifier("Projet")).getEStructuralFeature("branch")));
-        ((EList<EObject>) outputModelRoot.eGet(((EClass) MMSePackage.getEClassifier("config")).getEStructuralFeature("stages"))).add(cloningObject);
-        
-     // Projet.url + '.git' to Cloning.url
-        
-        EAttribute urlFeature = (EAttribute) cloningClass.getEStructuralFeature("url");
-        cloningObject.eSet(urlFeature, MRacine.eGet(((EClass) MMePackage.getEClassifier("Projet")).getEStructuralFeature("url"))+ ".git");
-        ((EList<EObject>) outputModelRoot.eGet(((EClass) MMSePackage.getEClassifier("config")).getEStructuralFeature("stages"))).add(cloningObject);
-        
-        
-      // Default value for Cloning.credentialID
 
         EAttribute credentialIDFeature = (EAttribute) cloningClass.getEStructuralFeature("credentialID");
         cloningObject.eSet(credentialIDFeature, "personal-cloning-key");
-        ((EList<EObject>) outputModelRoot.eGet(((EClass) MMSePackage.getEClassifier("config")).getEStructuralFeature("stages"))).add(cloningObject);
-        
 
-//Testing Stage
-      
-        // Testing.cmdtest to Tests.shell
-         
-        EObject rootObject = MRacine;
-        // Iterate through all elements
-        TreeIterator<Object> iterator = EcoreUtil.getAllContents(Collections.singletonList(rootObject));
-        while (iterator.hasNext()) {
-            Object obj = iterator.next();
-
-            if (obj instanceof EObject) {
-                EObject eObject = (EObject) obj;
-                for (EStructuralFeature feature : eObject.eClass().getEAllStructuralFeatures()) {
-                    Object value = eObject.eGet(feature);
-                    if ("cmdtest".equals(feature.getName())) {
-                    
-                   	 String cmdTesting = value.toString();
-                   	EClass testsClassShell = (EClass) MMSePackage.getEClassifier("Tests");
-                    EObject testsObjectShell = MMSePackage.getEFactoryInstance().create(testsClassShell);
-                    EAttribute shellFeature = (EAttribute) testsClassShell.getEStructuralFeature("shell");
-                    EAttribute classFeature = (EAttribute) testsClassShell.getEStructuralFeature("classestotest");
-
-                    // MRacine.eGet(((EClass) MMePackage.getEClassifier("Testing")).getEStructuralFeature("Cmdtest"))
-                    testsObjectShell.eSet(shellFeature, cmdTesting);
-                    testsObjectShell.eSet(classFeature,classestotest );
-
-                    ((EList<EObject>) outputModelRoot.eGet(((EClass) MMSePackage.getEClassifier("config")).getEStructuralFeature("stages"))).add(testsObjectShell);
-                    
-                    }
-                }
-            }
+        EReference stagesCloningReference = findContainmentReference(stagesClass, "cloning");
+        // Initialize the "cloning" feature if it's null
+        EList<EObject> cloningList = (EList<EObject>) stagesObject.eGet(stagesCloningReference);
+        if (cloningList == null) {
+            cloningList = new BasicEList<>();
         }
-        
-        
-        //testing.ClassesToTest to classestotest
-        
-          
 
-        // Default values
+        // Add cloningObject to cloningList
+        cloningList.add(cloningObject);
 
-        // Default value for Build.cmd
-        EClass buildClassCmd = (EClass) MMSePackage.getEClassifier("Build");
-        EObject buildObjectCmd = MMSePackage.getEFactoryInstance().create(buildClassCmd);
-        EAttribute cmdFeature = (EAttribute) buildClassCmd.getEStructuralFeature("cmd");
-        buildObjectCmd.eSet(cmdFeature, "sh \"docker build -t ${dockerImageTag} .\"");
-        ((EList<EObject>) outputModelRoot.eGet(((EClass) MMSePackage.getEClassifier("config")).getEStructuralFeature("stages"))).add(buildObjectCmd);
+        // Set cloningList to the "cloning" feature
+        stagesObject.eSet(stagesCloningReference, cloningObject);
 
-        // Default value for Deploy.cmd
-        EClass deployClassCmd = (EClass) MMSePackage.getEClassifier("Deploy");
-        EObject deployObjectCmd = MMSePackage.getEFactoryInstance().create(deployClassCmd);
-        EAttribute cmdDeployFeature = (EAttribute) deployClassCmd.getEStructuralFeature("cmd");
-        deployObjectCmd.eSet(cmdDeployFeature, "sh \"docker push ${dockerImageTag}\"");
-        ((EList<EObject>) outputModelRoot.eGet(((EClass) MMSePackage.getEClassifier("config")).getEStructuralFeature("stages"))).add(deployObjectCmd);
-        
 
-     // default value of the principal
-
-     // Default value for Config.agent
-     EClass agentClass = (EClass) MMSePackage.getEClassifier("Agent");
-     EObject agentObject = MMSePackage.getEFactoryInstance().create(agentClass);
-     EAttribute typeFeature = (EAttribute) agentClass.getEStructuralFeature("type");
-     agentObject.eSet(typeFeature, "docker");
-     outputModelRoot.eSet(((EClass) MMSePackage.getEClassifier("config")).getEStructuralFeature("agent"), agentObject);
-
-     //tests
-     
-
-        
         // Save Output Model:
         Resource outputModelResource = resourceSet.createResource(URI.createFileURI("C:/Users/zakar/eclipse-workspace/Ecore/model/Output.model"));
         outputModelResource.getContents().add(outputModelRoot);
@@ -237,6 +172,14 @@ public class Manip1 {
             indent.append("  "); // Adjust the number of spaces as needed
         }
         return indent.toString();
+    }
+    private static EReference findContainmentReference(EClass eClass, String featureName) {
+        for (EReference reference : eClass.getEAllReferences()) {
+            if (reference.isContainment() && reference.getName().equals(featureName)) {
+                return reference;
+            }
+        }
+        throw new IllegalArgumentException("Containment reference not found: " + featureName);
     }
 
     
