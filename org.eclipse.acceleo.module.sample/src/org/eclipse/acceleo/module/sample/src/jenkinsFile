@@ -10,9 +10,9 @@ def dockerImageTag = "${:${env.BUILD_NUMBER}"
     notifyBuild('STARTED')
 
     stage('Clone repository') {
-      git url:git@github.com:Zakaria.68K/SchoolMate.git,
-          credentialsId:personal-cloning-key,
-          branch:main
+      git url:"git@github.com:Zakaria.68K/SchoolMate.git",
+          credentialsId: "personal-cloning-key",
+          branch:"main"
     }
 
 

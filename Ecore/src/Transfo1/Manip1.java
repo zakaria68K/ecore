@@ -58,7 +58,11 @@ public class Manip1 {
         EClass outputRootClass = (EClass) MMSePackage.getEClassifier("config");
         EObject outputModelRoot = MMSePackage.getEFactoryInstance().create(outputRootClass);
        
+        //  Stages
+        EClass stagesClass = (EClass) MMSePackage.getEClassifier("Stages");
+        EObject stagesObjectt = MMSePackage.getEFactoryInstance().create(stagesClass);
 
+   
         // Transformation rules
         
         // Projet.name to Config.name
