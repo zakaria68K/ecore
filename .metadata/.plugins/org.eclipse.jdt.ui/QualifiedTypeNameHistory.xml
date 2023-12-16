@@ -21,4 +21,5 @@
     <fullyQualifiedTypeName name="Transfo1.ClassesToTestRetrieval"/>
     <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="java.util.Collections"/>
+    <fullyQualifiedTypeName name="org.eclipse.emf.ecore.EPackage"/>
 </qualifiedTypeNameHistroy>
