@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ASCII"?>
 <hoho:config xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:hoho="http://ezdevops2.0com">
   <stages name="Vos 4 stages...">
-    <cloning credentialID="personal-cloning-key"/>
+    <cloning credentialID="personal-cloning-key" branch="main"/>
   </stages>
 </hoho:config>

@@ -79,8 +79,11 @@ public class Manip1 {
 
         EAttribute credentialIDFeature = (EAttribute) cloningClass.getEStructuralFeature("credentialID");
         cloningObject.eSet(credentialIDFeature, "personal-cloning-key");
-
+        //transformation from the Projet branch to the cloning branch
+        EAttribute branchFeature = (EAttribute) cloningClass.getEStructuralFeature("branch");
+        cloningObject.eSet(branchFeature, MRacine.eGet(((EClass) MMePackage.getEClassifier("Projet")).getEStructuralFeature("branch")));
         EReference stagesCloningReference = findContainmentReference(stagesClass, "cloning");
+        
         // Initialize the "cloning" feature if it's null
         EList<EObject> cloningList = (EList<EObject>) stagesObject.eGet(stagesCloningReference);
         if (cloningList == null) {
