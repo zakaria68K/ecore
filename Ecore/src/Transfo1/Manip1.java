@@ -135,7 +135,7 @@ public class Manip1 {
                     testsObjectShell.eSet(shellFeature, cmdTesting);
                     testsObjectShell.eSet(classFeature,classestotest );
 
-///heere                    
+                
                     // Initialize the "testing" feature if it's null
                     EReference stagesTestingReference = findContainmentReference(stagesClass, "tests");
 
@@ -155,12 +155,27 @@ public class Manip1 {
         }
         
         
+ //Build Stage
+        EClass buildClassCmd = (EClass) MMSePackage.getEClassifier("Build");
+        EObject buildObjectCmd = MMSePackage.getEFactoryInstance().create(buildClassCmd);
+        EAttribute cmdFeature = (EAttribute) buildClassCmd.getEStructuralFeature("cmd");
+        buildObjectCmd.eSet(cmdFeature, "sh \"docker build -t ${dockerImageTag} .\"");
+        EReference stagesbuildReference = findContainmentReference(stagesClass, "build");
         
         
+        // Initialize the "build" feature if it's null
+        EList<EObject> buildList = (EList<EObject>) stagesObject.eGet(stagesbuildReference);
+        if (buildList == null) {
+            buildList = new BasicEList<>();
+        }
+
+        // Add cloningObject to cloningList
+        buildList.add(buildObjectCmd);
+
+        // Set cloningList to the "cloning" feature
+        stagesObject.eSet(stagesbuildReference, buildObjectCmd);
         
-        
-        
-        
+   
         
         
         

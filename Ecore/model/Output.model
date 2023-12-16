@@ -3,5 +3,6 @@
   <stages name="Vos 4 stages...">
     <tests shell="mvn test" classestotest="ClassesToTestRetrieval.java, CredentialsRetrieval.java, JenkinsCredentialRetrieval.java, Manip1.java"/>
     <cloning url="https://github.com/monprojettestt.git" credentialID="personal-cloning-key" branch="main"/>
+    <build cmd="sh &quot;docker build -t ${dockerImageTag} .&quot;"/>
   </stages>
 </hoho:config>
