@@ -8,7 +8,6 @@
     <fullyQualifiedTypeName name="org.eclipse.emf.ecore.EStructuralFeature"/>
     <fullyQualifiedTypeName name="org.eclipse.emf.ecore.EReference"/>
     <fullyQualifiedTypeName name="org.eclipse.emf.ecore.EAttribute"/>
-    <fullyQualifiedTypeName name="org.eclipse.emf.ecore.EClass"/>
     <fullyQualifiedTypeName name="org.eclipse.emf.common.util.TreeIterator"/>
     <fullyQualifiedTypeName name="org.eclipse.emf.ecore.util.EcoreUtil"/>
     <fullyQualifiedTypeName name="mymetamodel.Testing"/>
@@ -22,4 +21,6 @@
     <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="java.util.Collections"/>
     <fullyQualifiedTypeName name="org.eclipse.emf.ecore.EPackage"/>
+    <fullyQualifiedTypeName name="org.eclipse.emf.ecore.EClass"/>
+    <fullyQualifiedTypeName name="org.eclipse.emf.common.util.BasicEList"/>
 </qualifiedTypeNameHistroy>

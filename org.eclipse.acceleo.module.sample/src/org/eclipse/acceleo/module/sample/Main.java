@@ -387,6 +387,8 @@ public class Main extends AbstractAcceleoGenerator {
      */
     @Override
     public void registerResourceFactories(ResourceSet resourceSet) {
+    	EPackage.Registry.INSTANCE.put("http://ezdevops2.0com", ProjectsortiePackage.eINSTANCE);
+
         super.registerResourceFactories(resourceSet);
         /*
          * If you want to change the content of this method, do NOT forget to change the "@generated"
