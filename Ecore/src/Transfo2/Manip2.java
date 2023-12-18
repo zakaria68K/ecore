@@ -197,6 +197,47 @@ public class Manip2 {
 
         	// Set the list to the "argument" feature in "Workdir" class
         	workdirObject.eSet(argumentReference1,argumentObject1);
+        	
+        	
+        	// Create an instance of "Run" class
+        	EClass runClass = (EClass) MMSePackage.getEClassifier("Run");
+        	EObject runObject = MMSePackage.getEFactoryInstance().create(runClass);
+
+        	// Set the name of "Run" object
+        	EAttribute nameRun = (EAttribute) runClass.getEStructuralFeature("name");
+        	runObject.eSet(nameRun, "RUN");
+
+        	// Get the reference to the "instruction" feature
+        	EReference instructionReference2 = findContainmentReference(outputRootClass, "instruction");
+
+        	// Add "Run" object to the "instruction" feature
+        	if (outputModelRoot.eIsSet(instructionReference2)) {
+        	    // If the feature is already set, add to the existing list
+        	    ((EList<EObject>) outputModelRoot.eGet(instructionReference2)).add(runObject);
+        	} else {
+        	    // If the feature is not set, create a new list and set the feature
+        	    EList<EObject> runList = new BasicEList<>();
+        	    runList.add(runObject);
+        	    outputModelRoot.eSet(instructionReference2, runList);
+        	}
+
+        	// Create an argument from the 'Run' Instruction
+        	// Get the reference to the "argument" feature in "Run" class
+        	EReference argumentReference2 = findContainmentReference(runClass, "argument");
+
+        	// Create an instance of "Argument" class for the 'Run' instruction
+        	EClass argumentClass2 = (EClass) MMSePackage.getEClassifier("Argument");
+        	EObject argumentObject2 = MMSePackage.getEFactoryInstance().create(argumentClass2);
+
+        	// Set the value of the "Argument" object 
+        	EAttribute valueAttribute2 = (EAttribute) argumentClass2.getEStructuralFeature("value");
+        	argumentObject2.eSet(valueAttribute2, "mvn clean install -DskipTests");
+
+        	// Add "Argument" object to the "argument" feature in "Run" class
+        	((EList<EObject>) runObject.eGet(argumentReference2)).add(argumentObject2);
+
+
+
         	 
         	
 

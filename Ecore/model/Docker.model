@@ -6,4 +6,7 @@
   <instruction xsi:type="metamodel3:Workdir" name="WORKDIR">
     <argument value=" /opt/app"/>
   </instruction>
+  <instruction xsi:type="metamodel3:Run" name="RUN">
+    <argument value="mvn clean install -DskipTests"/>
+  </instruction>
 </metamodel3:Dockerfile>
