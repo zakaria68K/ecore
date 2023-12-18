@@ -1,12 +1,21 @@
 package Transfo2;
 
+import java.util.Collections;
+
+import org.eclipse.emf.common.util.BasicEList;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
 public class Manip2 {
@@ -38,10 +47,43 @@ public class Manip2 {
         Resource MResource = load_resource;
         EObject MRacine = MResource.getContents().get(0);
 
-        // Create an instance of the root class from the output metamodele
-        EClass outputRootClass = (EClass) MMSePackage.getEClassifier("config");
-        EObject outputModelRoot = MMSePackage.getEFactoryInstance().create(outputRootClass);
-    	
+ 
+        //Iterate through all elements to extract the value of the project type 
+        
+        EObject rootObject = MRacine;
+        TreeIterator<Object> iterator = EcoreUtil.getAllContents(Collections.singletonList(rootObject));
+        while (iterator.hasNext()) {
+            Object obj = iterator.next();
+
+            if (obj instanceof EObject) {
+                EObject eObject = (EObject) obj;
+                for (EStructuralFeature feature : eObject.eClass().getEAllStructuralFeatures()) {
+                    Object value = eObject.eGet(feature);
+                    if ("cmd".equals(feature.getName())) {
+                    
+                    	System.out.println(value);
+                    	}
+                	}	
+              	}
+        	}
+   
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     }
-	
 }
+            
+    	
+    
+	
+
