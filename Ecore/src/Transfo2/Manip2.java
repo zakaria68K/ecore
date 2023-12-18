@@ -1,5 +1,6 @@
 package Transfo2;
 
+import java.io.IOException;
 import java.util.Collections;
 
 import org.eclipse.emf.common.util.BasicEList;
@@ -52,20 +53,94 @@ public class Manip2 {
         
         EObject rootObject = MRacine;
         TreeIterator<Object> iterator = EcoreUtil.getAllContents(Collections.singletonList(rootObject));
+        EObject eObject= null;
+        Object language=  null ;
+        Object buildSoftware = null;
         while (iterator.hasNext()) {
             Object obj = iterator.next();
 
             if (obj instanceof EObject) {
-                EObject eObject = (EObject) obj;
+                 eObject = (EObject) obj;
                 for (EStructuralFeature feature : eObject.eClass().getEAllStructuralFeatures()) {
-                    Object value = eObject.eGet(feature);
-                    if ("cmd".equals(feature.getName())) {
                     
-                    	System.out.println(value);
+                    if ("cmd".equals(feature.getName())) {
+                    	language = eObject.eGet(feature);                    	
                     	}
+                    if ("description".equals(feature.getName())) {
+                        
+                    	buildSoftware = eObject.eGet(feature);
+                    	}
+                    
                 	}	
               	}
         	}
+        
+        //we will proceed by cases (1:java laguage/maven, 2:Java language/gradle, 3:Javascript language
+
+    	// Create an instance of the root class from the output metamodele
+        EClass outputRootClass = (EClass) MMSePackage.getEClassifier("Dockerfile");
+        EObject outputModelRoot = MMSePackage.getEFactoryInstance().create(outputRootClass);
+        
+        
+        
+        
+        //This case is for the Java : Gradle & Maven
+        
+        if(language.toString().contentEquals("java")) {
+    	//traitement pour la création d'un modèle de sortie DockerFile 
+
+
+
+        	
+            //le nom du DockerFile
+            EAttribute name = (EAttribute) outputRootClass.getEStructuralFeature("name");
+            outputModelRoot.eSet(name, "DockerFile");
+            
+            //Image de base settings
+            
+            //Creating the conform cloning child of stages 'first attribute'
+            EClass fromClass = (EClass) MMSePackage.getEClassifier("From");
+            EObject fromObject = MMSePackage.getEFactoryInstance().create(fromClass);
+
+            EAttribute nameFrom = (EAttribute) fromClass.getEStructuralFeature("name");
+            fromObject.eSet(nameFrom, "FROM");
+            
+            EReference fromReference = findContainmentReference(outputRootClass, "instruction");
+
+         // Initialize the "FROM" feature if it's null
+            EList<EObject> fromList = (EList<EObject>) outputModelRoot.eGet(fromReference);
+            if (fromList == null) {
+            	fromList = new BasicEList<>();
+            }
+
+            // Add cloningObject to cloningList
+            fromList.add(fromObject);
+
+            // Set cloningList to the "cloning" feature
+            outputModelRoot.eSet(fromReference, fromList);
+            
+            
+            // Save Output Model:
+            Resource outputModelResource = resourceSet.createResource(URI.createFileURI("C:/Users/zakar/eclipse-workspace/Ecore/model/Jenkins.model"));
+            outputModelResource.getContents().add(outputModelRoot);
+            try {
+                outputModelResource.save(null);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            printEObject(outputModelRoot,0);
+
+            
+            
+            
+            
+            
+            
+
+        }
+        
+       
+
    
     
     
@@ -78,9 +153,50 @@ public class Manip2 {
     
     
     
-    
-    
     }
+    private static void printEObject(EObject eObject, int indent) {
+        for (EStructuralFeature feature : eObject.eClass().getEStructuralFeatures()) {
+            Object value = eObject.eGet(feature);
+            
+            // Print feature name and value
+            System.out.print(getIndent(indent) + feature.getName() + ": ");
+            if (feature.isMany()) {
+                System.out.println();
+                for (Object element : (Iterable<?>) value) {
+                    if (element instanceof EObject) {
+                        printEObject((EObject) element, indent + 1);
+                    } else {
+                        System.out.println(getIndent(indent + 1) + element);
+                    }
+                }
+            } else {
+                if (value instanceof EObject) {
+                    System.out.println();
+                    printEObject((EObject) value, indent + 1);
+                } else {
+                    System.out.println(value);
+                }  
+            }
+        }
+    }
+
+    private static String getIndent(int count) {
+        StringBuilder indent = new StringBuilder();
+        for (int i = 0; i < count; i++) {
+            indent.append("  "); // Adjust the number of spaces as needed
+        }
+        return indent.toString();
+    }
+    
+    private static EReference findContainmentReference(EClass eClass, String featureName) {
+        for (EReference reference : eClass.getEAllReferences()) {
+            if (reference.isContainment() && reference.getName().equals(featureName)) {
+                return reference;
+            }
+        }
+        throw new IllegalArgumentException("Containment reference not found: " + featureName);
+    }
+
 }
             
     	
