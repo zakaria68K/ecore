@@ -9,4 +9,10 @@
   <instruction xsi:type="metamodel3:Run" name="RUN">
     <argument value="mvn clean install -DskipTests"/>
   </instruction>
+  <instruction xsi:type="metamodel3:Cmd" name="CMD">
+    <argument value="[&quot;java&quot;,&quot;-jar&quot;,&quot;-Dserver.port=${PORT}&quot;,&quot;app.jar&quot;]"/>
+  </instruction>
+  <instruction xsi:type="metamodel3:Copy" name="COPY">
+    <argument value="  --from=build /opt/app/build/libs/*.jar app.jar"/>
+  </instruction>
 </metamodel3:Dockerfile>

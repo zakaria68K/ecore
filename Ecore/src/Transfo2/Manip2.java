@@ -199,6 +199,8 @@ public class Manip2 {
         	workdirObject.eSet(argumentReference1,argumentObject1);
         	
         	
+        	
+        	
         	// Create an instance of "Run" class
         	EClass runClass = (EClass) MMSePackage.getEClassifier("Run");
         	EObject runObject = MMSePackage.getEFactoryInstance().create(runClass);
@@ -236,8 +238,102 @@ public class Manip2 {
         	// Add "Argument" object to the "argument" feature in "Run" class
         	((EList<EObject>) runObject.eGet(argumentReference2)).add(argumentObject2);
 
+        	
+        	
+        	
+        	
+        	
+        	// Create an instance of "CMD" class
+        	EClass cmdClass = (EClass) MMSePackage.getEClassifier("Cmd");
+        	EObject cmdObject = MMSePackage.getEFactoryInstance().create(cmdClass);
+
+        	// Set the name of "Cmd" object
+        	EAttribute nameCmd = (EAttribute) runClass.getEStructuralFeature("name");
+        	cmdObject.eSet(nameCmd, "CMD");
+
+        	// Get the reference to the "instruction" feature
+        	EReference instructionReference4 = findContainmentReference(outputRootClass, "instruction");
+
+        	// Add "CMD" object to the "instruction" feature
+        	if (outputModelRoot.eIsSet(instructionReference4)) {
+        	    // If the feature is already set, add to the existing list
+        	    ((EList<EObject>) outputModelRoot.eGet(instructionReference4)).add(cmdObject);
+        	} else {
+        	    // If the feature is not set, create a new list and set the feature
+        	    EList<EObject> cmdList = new BasicEList<>();
+        	    cmdList.add(cmdObject);
+        	    outputModelRoot.eSet(instructionReference4, cmdList);
+        	}
+
+        	// Create an argument from the 'Cmd' Instruction
+        	// Get the reference to the "argument" feature in "Cmd" class
+        	EReference argumentReference4 = findContainmentReference(cmdClass, "argument");
+
+        	// Create an instance of "Argument" class for the 'Cmd' instruction
+        	EClass argumentClass4 = (EClass) MMSePackage.getEClassifier("Argument");
+        	EObject argumentObject4 = MMSePackage.getEFactoryInstance().create(argumentClass4);
+
+        	// Set the value of the "Argument" object 
+        	EAttribute valueAttribute4 = (EAttribute) argumentClass4.getEStructuralFeature("value");
+        	argumentObject4.eSet(valueAttribute4, "[\"java\",\"-jar\",\"-Dserver.port=${PORT}\",\"app.jar\"]");
+
+        	// Add "Argument" object to the "argument" feature in "Cmd" class
+        	((EList<EObject>) cmdObject.eGet(argumentReference4)).add(argumentObject4);
 
 
+
+
+        	
+        	
+
+        	
+       	 // Create an instance of "Copy" class
+       	EClass copyClass = (EClass) MMSePackage.getEClassifier("Copy");
+       	EObject copyObject = MMSePackage.getEFactoryInstance().create(copyClass);
+
+       	// Set the name of "Copy" object
+       	EAttribute nameCopy = (EAttribute) copyClass.getEStructuralFeature("name");
+       	copyObject.eSet(nameCopy, "COPY");
+
+       	// Get the reference to the "instruction" feature
+       	EReference instructionReference3 = findContainmentReference(outputRootClass, "instruction");
+
+       	// Add "Copy" object to the "instruction" feature
+       	if (outputModelRoot.eIsSet(instructionReference3)) {
+       	    // If the feature is already set, add to the existing list
+       	    ((EList<EObject>) outputModelRoot.eGet(instructionReference3)).add(copyObject);
+       	} else {
+       	    // If the feature is not set, create a new list and set the feature
+       	    EList<EObject> copyList = new BasicEList<>();
+       	 copyList.add(fromObject);
+       	    outputModelRoot.eSet(instructionReference3, copyList);
+       	}
+       	
+       	//Create an argument from the 'Copy' Instruction
+       	// Get the reference to the "argument" feature in "Copy" class
+       	EReference argumentReference3 = findContainmentReference(copyClass, "argument");
+
+       	// Create an instance of "Argument" class for the 'Copy' instruction
+       	EClass argumentClass3 = (EClass) MMSePackage.getEClassifier("Argument");
+       	EObject argumentObject3 = MMSePackage.getEFactoryInstance().create(argumentClass3);
+
+       	// Set the value of the "Argument" object 
+       
+       	EAttribute valueAttribute3 = (EAttribute) argumentClass3.getEStructuralFeature("value");
+       	argumentObject3.eSet(valueAttribute3, "  --from=build /opt/app/build/libs/*.jar app.jar");
+
+       	// Get the existing list of "Argument" objects or create a new one
+       	EList<EObject> argumentList3 = (EList<EObject>) copyObject.eGet(argumentReference3);
+       	if (argumentList3 == null) {
+       		argumentList3 = new BasicEList<>();
+       	}
+
+       	// Add "Argument" object to the list
+       	argumentList3.add(argumentObject3);
+
+     // Add "Argument" object to the "argument" feature in "Run" class
+    	((EList<EObject>) copyObject.eGet(argumentReference3)).add(argumentObject3);
+       	
         	 
         	
 
