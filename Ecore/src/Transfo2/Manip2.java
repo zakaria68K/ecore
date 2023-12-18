@@ -92,36 +92,38 @@ public class Manip2 {
 
 
         	
-            //le nom du DockerFile
-            EAttribute name = (EAttribute) outputRootClass.getEStructuralFeature("name");
-            outputModelRoot.eSet(name, "DockerFile");
-            
-            //Image de base settings
-            
-            //Creating the conform cloning child of stages 'first attribute'
-            EClass fromClass = (EClass) MMSePackage.getEClassifier("From");
-            EObject fromObject = MMSePackage.getEFactoryInstance().create(fromClass);
 
-            EAttribute nameFrom = (EAttribute) fromClass.getEStructuralFeature("name");
-            fromObject.eSet(nameFrom, "FROM");
-            
-            EReference fromReference = findContainmentReference(outputRootClass, "instruction");
+        	// Set the name of DockerFile
+        	EAttribute name = (EAttribute) outputRootClass.getEStructuralFeature("name");
+        	outputModelRoot.eSet(name, "DockerFile");
 
-         // Initialize the "FROM" feature if it's null
-            EList<EObject> fromList = (EList<EObject>) outputModelRoot.eGet(fromReference);
-            if (fromList == null) {
-            	fromList = new BasicEList<>();
-            }
+        	// Create an instance of "From" class
+        	EClass fromClass = (EClass) MMSePackage.getEClassifier("From");
+        	EObject fromObject = MMSePackage.getEFactoryInstance().create(fromClass);
 
-            // Add cloningObject to cloningList
-            fromList.add(fromObject);
+        	// Set the name of "From" object
+        	EAttribute nameFrom = (EAttribute) fromClass.getEStructuralFeature("name");
+        	fromObject.eSet(nameFrom, "FROM");
 
-            // Set cloningList to the "cloning" feature
-            outputModelRoot.eSet(fromReference, fromList);
+        	// Get the reference to the "instruction" feature
+        	EReference instructionReference = findContainmentReference(outputRootClass, "instruction");
+
+        	// Add "From" object to the "instruction" feature
+
+        	if (outputModelRoot.eIsSet(instructionReference)) {
+        	    // If the feature is already set, add to the existing list
+        	    ((EList<EObject>) outputModelRoot.eGet(instructionReference)).add(fromObject);
+        	} else {
+        	    // If the feature is not set, create a new list and set the feature
+        	    EList<EObject> fromList = new BasicEList<>();
+        	    fromList.add(fromObject);
+        	    outputModelRoot.eSet(instructionReference, fromList);
+        	}
+
             
             
             // Save Output Model:
-            Resource outputModelResource = resourceSet.createResource(URI.createFileURI("C:/Users/zakar/eclipse-workspace/Ecore/model/Jenkins.model"));
+            Resource outputModelResource = resourceSet.createResource(URI.createFileURI("C:/Users/zakar/eclipse-workspace/Ecore/model/Docker.model"));
             outputModelResource.getContents().add(outputModelRoot);
             try {
                 outputModelResource.save(null);
