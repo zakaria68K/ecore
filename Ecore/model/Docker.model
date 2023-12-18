@@ -3,4 +3,7 @@
   <instruction xsi:type="metamodel3:From" name="FROM">
     <argument value="maven:3.8.5-openjdk-17-slim AS build"/>
   </instruction>
+  <instruction xsi:type="metamodel3:Workdir" name="WORKDIR">
+    <argument value=" /opt/app"/>
+  </instruction>
 </metamodel3:Dockerfile>

@@ -147,6 +147,58 @@ public class Manip2 {
 
         	// Set the list to the "argument" feature in "From" class
         	fromObject.eSet(argumentReference,argumentObject);
+        	
+        	
+        	
+        	
+        	 // Create an instance of "Workdir" class
+        	EClass workdirClass = (EClass) MMSePackage.getEClassifier("Workdir");
+        	EObject workdirObject = MMSePackage.getEFactoryInstance().create(workdirClass);
+
+        	// Set the name of "Workdir" object
+        	EAttribute nameWorkdir = (EAttribute) workdirClass.getEStructuralFeature("name");
+        	workdirObject.eSet(nameWorkdir, "WORKDIR");
+
+        	// Get the reference to the "instruction" feature
+        	EReference instructionReference1 = findContainmentReference(outputRootClass, "instruction");
+
+        	// Add "From" object to the "instruction" feature
+        	if (outputModelRoot.eIsSet(instructionReference1)) {
+        	    // If the feature is already set, add to the existing list
+        	    ((EList<EObject>) outputModelRoot.eGet(instructionReference1)).add(workdirObject);
+        	} else {
+        	    // If the feature is not set, create a new list and set the feature
+        	    EList<EObject> workdirList = new BasicEList<>();
+        	    workdirList.add(fromObject);
+        	    outputModelRoot.eSet(instructionReference1, workdirList);
+        	}
+        	
+        	//Create an argument from the 'Workdir' Instruction
+        	// Get the reference to the "argument" feature in "Workdir" class
+        	EReference argumentReference1 = findContainmentReference(workdirClass, "argument");
+
+        	// Create an instance of "Argument" class for the 'Workdir' instruction
+        	EClass argumentClass1 = (EClass) MMSePackage.getEClassifier("Argument");
+        	EObject argumentObject1 = MMSePackage.getEFactoryInstance().create(argumentClass1);
+
+        	// Set the value of the "Argument" object 
+        
+        	EAttribute valueAttribute1 = (EAttribute) argumentClass1.getEStructuralFeature("value");
+        	argumentObject1.eSet(valueAttribute1, " /opt/app");
+
+        	// Get the existing list of "Argument" objects or create a new one
+        	EList<EObject> argumentList1 = (EList<EObject>) workdirObject.eGet(argumentReference1);
+        	if (argumentList1 == null) {
+        	    argumentList1 = new BasicEList<>();
+        	}
+
+        	// Add "Argument" object to the list
+        	argumentList1.add(argumentObject1);
+
+        	// Set the list to the "argument" feature in "Workdir" class
+        	workdirObject.eSet(argumentReference1,argumentObject1);
+        	 
+        	
 
             
             // Save Output Model:
