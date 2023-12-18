@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="ASCII"?>
 <metamodel3:Dockerfile xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:metamodel3="http://ezdevops2.0com" name="DockerFile">
-  <instruction xsi:type="metamodel3:From" name="FROM"/>
+  <instruction xsi:type="metamodel3:From" name="FROM">
+    <argument value="maven:3.8.5-openjdk-17-slim AS build"/>
+  </instruction>
 </metamodel3:Dockerfile>

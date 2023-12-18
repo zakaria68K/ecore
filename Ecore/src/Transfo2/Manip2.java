@@ -97,6 +97,10 @@ public class Manip2 {
         	EAttribute name = (EAttribute) outputRootClass.getEStructuralFeature("name");
         	outputModelRoot.eSet(name, "DockerFile");
 
+        	// Set the name of DockerFile
+        	EAttribute namefrom = (EAttribute) outputRootClass.getEStructuralFeature("name");
+        	outputModelRoot.eSet(namefrom, "DockerFile");
+
         	// Create an instance of "From" class
         	EClass fromClass = (EClass) MMSePackage.getEClassifier("From");
         	EObject fromObject = MMSePackage.getEFactoryInstance().create(fromClass);
@@ -109,7 +113,6 @@ public class Manip2 {
         	EReference instructionReference = findContainmentReference(outputRootClass, "instruction");
 
         	// Add "From" object to the "instruction" feature
-
         	if (outputModelRoot.eIsSet(instructionReference)) {
         	    // If the feature is already set, add to the existing list
         	    ((EList<EObject>) outputModelRoot.eGet(instructionReference)).add(fromObject);
@@ -119,8 +122,32 @@ public class Manip2 {
         	    fromList.add(fromObject);
         	    outputModelRoot.eSet(instructionReference, fromList);
         	}
+        	
+        	//Create an argument from the 'FROM' Instruction
+        	// Get the reference to the "argument" feature in "From" class
+        	EReference argumentReference = findContainmentReference(fromClass, "argument");
 
-            
+        	// Create an instance of "Argument" class for the 'FROM' instruction
+        	EClass argumentClass = (EClass) MMSePackage.getEClassifier("Argument");
+        	EObject argumentObject = MMSePackage.getEFactoryInstance().create(argumentClass);
+
+        	// Set the value of the "Argument" object 
+        	//if statement for the gradle or the maven
+        	EAttribute valueAttribute = (EAttribute) argumentClass.getEStructuralFeature("value");
+        	argumentObject.eSet(valueAttribute, "maven:3.8.5-openjdk-17-slim AS build");
+
+        	// Get the existing list of "Argument" objects or create a new one
+        	EList<EObject> argumentList = (EList<EObject>) fromObject.eGet(argumentReference);
+        	if (argumentList == null) {
+        	    argumentList = new BasicEList<>();
+        	}
+
+        	// Add "Argument" object to the list
+        	argumentList.add(argumentObject);
+
+        	// Set the list to the "argument" feature in "From" class
+        	fromObject.eSet(argumentReference,argumentObject);
+
             
             // Save Output Model:
             Resource outputModelResource = resourceSet.createResource(URI.createFileURI("C:/Users/zakar/eclipse-workspace/Ecore/model/Docker.model"));
