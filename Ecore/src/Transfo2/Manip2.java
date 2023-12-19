@@ -367,12 +367,7 @@ public class Manip2 {
                 e.printStackTrace();
             }
             printEObject(outputModelRoot,0);
-
-            
-            
-            
-            
-             
+    
 
         }
         
