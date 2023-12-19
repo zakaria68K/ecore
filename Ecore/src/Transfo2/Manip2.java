@@ -133,9 +133,16 @@ public class Manip2 {
 
         	// Set the value of the "Argument" object 
         	//if statement for the gradle or the maven
+        	if(buildSoftware.toString().contentEquals("maven")) {
         	EAttribute valueAttribute = (EAttribute) argumentClass.getEStructuralFeature("value");
         	argumentObject.eSet(valueAttribute, "maven:3.8.5-openjdk-17-slim AS build");
-
+        	}
+        	
+        	else if(buildSoftware.toString().contentEquals("gradle")) {
+            	EAttribute valueAttribute = (EAttribute) argumentClass.getEStructuralFeature("value");
+            	argumentObject.eSet(valueAttribute, "gradle:7.3-jdk17 AS build");
+            	}
+        	
         	// Get the existing list of "Argument" objects or create a new one
         	EList<EObject> argumentList = (EList<EObject>) fromObject.eGet(argumentReference);
         	if (argumentList == null) {
@@ -232,9 +239,14 @@ public class Manip2 {
         	EObject argumentObject2 = MMSePackage.getEFactoryInstance().create(argumentClass2);
 
         	// Set the value of the "Argument" object 
+        	if(buildSoftware.toString().contentEquals("maven")) {
         	EAttribute valueAttribute2 = (EAttribute) argumentClass2.getEStructuralFeature("value");
         	argumentObject2.eSet(valueAttribute2, "mvn clean install -DskipTests");
-
+        	}
+        	else if(buildSoftware.toString().contentEquals("gradle")) {
+        		EAttribute valueAttribute2 = (EAttribute) argumentClass2.getEStructuralFeature("value");
+            	argumentObject2.eSet(valueAttribute2, "gradle build --no-daemon");
+        	}
         	// Add "Argument" object to the "argument" feature in "Run" class
         	((EList<EObject>) runObject.eGet(argumentReference2)).add(argumentObject2);
 
@@ -319,8 +331,16 @@ public class Manip2 {
 
        	// Set the value of the "Argument" object 
        
-       	EAttribute valueAttribute3 = (EAttribute) argumentClass3.getEStructuralFeature("value");
+       	if(buildSoftware.toString().contentEquals("maven")) {
+       		EAttribute valueAttribute3 = (EAttribute) argumentClass3.getEStructuralFeature("value");
+           	argumentObject3.eSet(valueAttribute3, "--from=build /opt/app/target/*.jar app.jar");
+       	}
+       	
+	if(buildSoftware.toString().contentEquals("gradle")) {
+		EAttribute valueAttribute3 = (EAttribute) argumentClass3.getEStructuralFeature("value");
        	argumentObject3.eSet(valueAttribute3, "  --from=build /opt/app/build/libs/*.jar app.jar");
+       	}
+       
 
        	// Get the existing list of "Argument" objects or create a new one
        	EList<EObject> argumentList3 = (EList<EObject>) copyObject.eGet(argumentReference3);
@@ -352,8 +372,7 @@ public class Manip2 {
             
             
             
-            
-            
+             
 
         }
         
