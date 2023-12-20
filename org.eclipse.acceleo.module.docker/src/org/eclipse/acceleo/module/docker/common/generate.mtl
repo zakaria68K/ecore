@@ -1,0 +1,7 @@
+[comment encoding = UTF-8 /]
+[module generate('http://ezdevops2.com')]
+
+
+[template public generateElement(aDockerfile : Dockerfile)]
+
+[/template]

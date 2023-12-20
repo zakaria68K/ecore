@@ -20,7 +20,9 @@
     <fullyQualifiedTypeName name="Transfo1.ClassesToTestRetrieval"/>
     <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="java.util.Collections"/>
-    <fullyQualifiedTypeName name="org.eclipse.emf.ecore.EPackage"/>
     <fullyQualifiedTypeName name="org.eclipse.emf.ecore.EClass"/>
     <fullyQualifiedTypeName name="org.eclipse.emf.common.util.BasicEList"/>
+    <fullyQualifiedTypeName name="org.eclipse.emf.ecore.EPackage"/>
+    <fullyQualifiedTypeName name="org.eclipse.emf.ecore.EPackage.Registry"/>
+    <fullyQualifiedTypeName name="dockermetamodel.DockermetamodelPackage"/>
 </qualifiedTypeNameHistroy>
