@@ -16,6 +16,9 @@ COPY ./ [(instruction.oclAsType(dockermetamodel::Workdir)).argument.value/]
 [if (instruction.oclIsTypeOf(dockermetamodel::Run))]
 RUN [(instruction.oclAsType(dockermetamodel::Run)).argument.value/]
             [/if]
+[if (instruction.oclIsTypeOf(dockermetamodel::Copy))]
+COPY [(instruction.oclAsType(dockermetamodel::Copy)).argument.value/]
+            [/if]
         [/for]
 
  
