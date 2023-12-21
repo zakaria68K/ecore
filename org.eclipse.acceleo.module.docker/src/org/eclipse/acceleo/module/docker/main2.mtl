@@ -5,10 +5,17 @@
     [comment @main/]
 
     [file ('src/DockerFile', false, 'UTF-8')]
-        [for (instruction : Instruction | dockerfile.instruction)]
-            [if (instruction.oclIsTypeOf(dockermetamodel::From))]
-                FROM [(instruction.oclAsType(dockermetamodel::From)).argument.value/]
+		[for (instruction : Instruction | dockerfile.instruction)]
+			[if (instruction.oclIsTypeOf(dockermetamodel::From))]
+FROM [(instruction.oclAsType(dockermetamodel::From)).argument.value/]
+            [/if]
+			[if (instruction.oclIsTypeOf(dockermetamodel::Workdir))]
+WORKDIR [(instruction.oclAsType(dockermetamodel::Workdir)).argument.value/]
             [/if]
         [/for]
+		[for (instruction : Instruction | dockerfile.instruction)]
+
+        [/for]	
+ 
     [/file]
 [/template]
