@@ -13,10 +13,11 @@ FROM [(instruction.oclAsType(dockermetamodel::From)).argument.value/]
 WORKDIR [(instruction.oclAsType(dockermetamodel::Workdir)).argument.value/]
 COPY ./ [(instruction.oclAsType(dockermetamodel::Workdir)).argument.value/]
             [/if]
+[if (instruction.oclIsTypeOf(dockermetamodel::Run))]
+RUN [(instruction.oclAsType(dockermetamodel::Run)).argument.value/]
+            [/if]
         [/for]
-		[for (instruction : Instruction | dockerfile.instruction)]
 
-        [/for]	
  
     [/file]
 [/template]
