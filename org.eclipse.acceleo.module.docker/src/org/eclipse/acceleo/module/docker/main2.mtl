@@ -2,8 +2,13 @@
 [module main2('http://ezdevops2.com')/]
 
 [template public main2(dockerfile : Dockerfile)]
-	
-	[comment @main /]
-	
-	
+    [comment @main/]
+
+    [file ('src/DockerFile', false, 'UTF-8')]
+        [for (instruction : Instruction | dockerfile.instruction)]
+            [if (instruction.oclIsTypeOf(dockermetamodel::From))]
+                FROM [(instruction.oclAsType(dockermetamodel::From)).argument.value/]
+            [/if]
+        [/for]
+    [/file]
 [/template]
