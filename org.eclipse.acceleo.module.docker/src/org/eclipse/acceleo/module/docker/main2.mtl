@@ -18,8 +18,14 @@ RUN [(instruction.oclAsType(dockermetamodel::Run)).argument.value/]
             [/if]
 [if (instruction.oclIsTypeOf(dockermetamodel::Copy))]
 COPY [(instruction.oclAsType(dockermetamodel::Copy)).argument.value/]
+ENV PORT 8080
+EXPOSE $PORT
+            [/if]
+[if (instruction.oclIsTypeOf(dockermetamodel::Cmd))]
+ENTRYPOINT  [(instruction.oclAsType(dockermetamodel::Cmd)).argument.value/]
             [/if]
         [/for]
+
 
  
     [/file]
