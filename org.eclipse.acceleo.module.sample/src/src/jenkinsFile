@@ -35,7 +35,7 @@ stage('Run integration & unit tests') {
     }
 
 
- stage('Build Docker image') {
+ stage('Build Docker image Othmane') {
       sh "docker build -t ${dockerImageTag} ."
     }
 

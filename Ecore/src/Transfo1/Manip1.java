@@ -20,9 +20,15 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
+import projectsortie.ProjectsortiePackage;
+
 public class Manip1 {
 
     public static void main(String[] args) {
+    	ExecManip1("C:/Users/zakar/eclipse-workspace/Ecore/model/InitConfig/InitConfig.model");
+    }
+    
+    private static void ExecManip1(String ModelInitUri) {
         // Create an instance of ClassesToTestRetrieval
         ClassesToTestRetrieval classesRetrieval = new ClassesToTestRetrieval();
 
@@ -30,6 +36,8 @@ public class Manip1 {
       
         String classestotest =   String.join(", ", classesRetrieval.retrieveFileNames());
         
+        //  EPackage.Registry.INSTANCE.put("http://ezdevops2.0com", ProjectsortiePackage.eINSTANCE);
+
 
 
         // Register the XMI resource factory for the EMF resource set
@@ -51,7 +59,7 @@ public class Manip1 {
         // Load the input model (InitConfig.model)
         String nsUri = MMePackage.getNsURI();
         resourceSet.getPackageRegistry().put(nsUri, MMePackage);
-        Resource load_resource = resourceSet.getResource(URI.createFileURI("C:/Users/zakar/eclipse-workspace/Ecore/model/InitConfig/InitConfig.model"), true);
+        Resource load_resource = resourceSet.getResource(URI.createFileURI(ModelInitUri), true);
         Resource MResource = load_resource;
         EObject MRacine = MResource.getContents().get(0);
 
@@ -182,7 +190,7 @@ public class Manip1 {
         EClass deployClassCmd = (EClass) MMSePackage.getEClassifier("Deploy");
         EObject deployObjectCmd = MMSePackage.getEFactoryInstance().create(deployClassCmd);
         EAttribute cmdDeployFeature = (EAttribute) deployClassCmd.getEStructuralFeature("cmd");
-        deployObjectCmd.eSet(cmdDeployFeature, "sh \"docker push ${dockerImageTag}\"");
+        deployObjectCmd.eSet(cmdDeployFeature, "sh \"docker push ${doockerImageTag}\"");
         
 EReference stagesdeployReference = findContainmentReference(stagesClass, "deploy");
         
@@ -213,7 +221,6 @@ EReference stagesdeployReference = findContainmentReference(stagesClass, "deploy
         }
         printEObject(outputModelRoot,0);
     }
-    
 
     private static void setFeatureValue(EObject targetObject, EPackage targetPackage, String targetClassName, String targetFeatureName,
             EObject sourceObject, EPackage sourcePackage, String sourceClassName, String sourceFeatureName) {

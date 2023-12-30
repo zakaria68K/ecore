@@ -26,6 +26,7 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+
 import projectsortie.ProjectsortiePackage;
 
 /**
@@ -127,6 +128,53 @@ public class Main extends AbstractAcceleoGenerator {
             if (args.length < 2) {
                 System.out.println("Arguments not valid : {model, folder}.");
             } else {
+                URI modelURI = URI.createFileURI(args[0]);
+                File folder = new File(args[1]);
+                
+                List<String> arguments = new ArrayList<String>();
+                
+                /*
+                 * If you want to change the content of this method, do NOT forget to change the "@generated"
+                 * tag in the Javadoc of this method to "@generated NOT". Without this new tag, any compilation
+                 * of the Acceleo module with the main template that has caused the creation of this class will
+                 * revert your modifications.
+                 */
+
+                /*
+                 * Add in this list all the arguments used by the starting point of the generation
+                 * If your main template is called on an element of your model and a String, you can
+                 * add in "arguments" this "String" attribute.
+                 */
+                
+                Main generator = new Main(modelURI, folder, arguments);
+                
+                /*
+                 * Add the properties from the launch arguments.
+                 * If you want to programmatically add new properties, add them in "propertiesFiles"
+                 * You can add the absolute path of a properties files, or even a project relative path.
+                 * If you want to add another "protocol" for your properties files, please override 
+                 * "getPropertiesLoaderService(AcceleoService)" in order to return a new property loader.
+                 * The behavior of the properties loader service is explained in the Acceleo documentation
+                 * (Help -> Help Contents).
+                 */
+                 
+                for (int i = 2; i < args.length; i++) {
+                    generator.addPropertiesFile(args[i]);
+                }
+                
+                generator.doGenerate(new BasicMonitor());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public static void parseManip1(String[] args) {
+        try {
+            if (args.length < 2) {
+                System.out.println("Arguments not valid : {model, folder}.");
+            } else {
+
+            	
                 URI modelURI = URI.createFileURI(args[0]);
                 File folder = new File(args[1]);
                 
@@ -343,8 +391,6 @@ public class Main extends AbstractAcceleoGenerator {
      */
     @Override
     public void registerPackages(ResourceSet resourceSet) {
-    	EPackage.Registry.INSTANCE.put("http://ezdevops2.0com", ProjectsortiePackage.eINSTANCE);
-
         super.registerPackages(resourceSet);
         
         /*
@@ -389,7 +435,6 @@ public class Main extends AbstractAcceleoGenerator {
      */
     @Override
     public void registerResourceFactories(ResourceSet resourceSet) {
-
         super.registerResourceFactories(resourceSet);
         /*
          * If you want to change the content of this method, do NOT forget to change the "@generated"
