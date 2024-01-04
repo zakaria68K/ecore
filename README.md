@@ -28,7 +28,7 @@ En utilisant des concepts avancées de MDE, nous allons automatiser des tâches 
 
 
 
-![img](./images/mymetamodel class diagram.jpg)
+![img](./images/mymetamodelclassdiagram.jpg)
 
 
 
@@ -38,7 +38,7 @@ En utilisant des concepts avancées de MDE, nous allons automatiser des tâches 
 
 
 
-![img](./images/projectsortie class diagram.jpg)
+![img](./images/projectsortieclassdiagram.jpg)
 
 ****
 
@@ -46,7 +46,7 @@ En utilisant des concepts avancées de MDE, nous allons automatiser des tâches 
 
 
 
-![img](./images/dockermetamodel class diagram.jpg)
+![img](./images/dockermetamodelclassdiagram.jpg)
 
 
 
