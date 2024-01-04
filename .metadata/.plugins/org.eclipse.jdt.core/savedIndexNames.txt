@@ -110,7 +110,6 @@ INDEX VERSION 1.134+C:\Users\zakar\eclipse-workspace\.metadata\.plugins\org.ecli
 663124928.index
 2411620476.index
 2670840086.index
-1938868771.index
 2768509347.index
 4132925068.index
 3785490380.index

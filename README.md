@@ -20,7 +20,39 @@ En utilisant des concepts avancées de MDE, nous allons automatiser des tâches 
 
 **Itération 3:** Création d'une **infrastructure** pour le déploiement, cette itération assure que l'application est prête à affronter les défis avec une infrastructure évolutive.
 
+
+
 ![image-20231121234218017](./images/diagram1.png)
+
+**`Métamodèle 1(InitConfig)`**
+
+
+
+![img](./images/mymetamodel class diagram.jpg)
+
+
+
+
+
+**`Métamodèle 2(Jenkins)`**
+
+
+
+![img](./images/projectsortie class diagram.jpg)
+
+****
+
+**`Métamodèle 3(Docker)`**
+
+
+
+![img](./images/dockermetamodel class diagram.jpg)
+
+
+
+
+
+
 
 #### Comment ça fonctionne
 
@@ -30,31 +62,26 @@ Prenons un moment pour comprendre les étapes nécessaires pour tirer le meilleu
 
 - Accédez à l'interface web de **Ecore**.
 
-- Entrez `l'URL` GitHub de votre projet.
-
-- Indiquez les informations d'identification du profil Jenkins à utiliser pour le pipeline.
-
-- Fournissez les informations d'identification Docker nécessaires pour le déploiement de l'image.
+- Fournir le modèle`InitConfig`.
 
 - Spécifier les besoins de l'infrastructure voulue.
 
-  
-  
-  
-  
   #### Exigences du projet en entrée
-  
+
   - Les tests sont regroupés dans un répertoire nommé `tests`.
-  
   - Le token de Jenkins Api doit être placé dans ce fichier `/ressources/config.properties` , nommé par la suite **jenkins.api.token**.
-  
   - Le répertoire doit être public.
+  - Confirmer l'utilisation de certaines formes pour les credentials dans les outputs du deux itérations.
+
   
-    
-  
-  
 
 
 
 
+#### Conclusion:
 
+En conclusion, **Ecore** offre une approche novatrice dans le domaine de l'ingénierie dirigée par les modèles (MDE), en se concentrant sur la simplification du processus de développement logiciel et la rationalisation du cycle DevOps. Les principales fonctionnalités et itérations du projet démontrent son potentiel à automatiser des tâches répétitives, réduire les points de friction et accélérer le déploiement des applications.
+
+La première itération, implémentant un fichier de configuration initial vers un **JenkinsFile**, établit les bases du pipeline DevOps. La deuxième itération, générant un fichier de configuration vers un **DockerFile**, rend l'application portable et prête pour le déploiement, avec une image déployée dans un Docker Registry. Enfin, la troisième itération se concentre sur la création d'une infrastructure pour le déploiement, assurant que l'application est prête à affronter les défis avec une infrastructure évolutive.
+
+En résumé, Ecore promet de simplifier le développement logiciel, d'accélérer le déploiement et de réduire les complexités liées au cycle DevOps, offrant ainsi une solution complète et efficace pour les équipes de développement.

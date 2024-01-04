@@ -16,7 +16,7 @@ def dockerImageTag = "${:${env.BUILD_NUMBER}"
     }
 
 
-stage('Run integration & unit tests') {
+stage('Run integration & unit testos') {
        withCredentials([ 
         string(credentialsId: 'test-database-url', variable: 'TEST_DATABASE_URL'),
         string(credentialsId: 'test-database-username', variable: 'TEST_DATABASE_USERNAME'),
@@ -35,7 +35,7 @@ stage('Run integration & unit tests') {
     }
 
 
- stage('Build Docker image Othmane') {
+ stage('Build Docker image') {
       sh "docker build -t ${dockerImageTag} ."
     }
 

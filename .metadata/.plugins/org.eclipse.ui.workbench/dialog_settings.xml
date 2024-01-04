@@ -19,20 +19,17 @@
 		<item key="org.eclipse.ui.internal.quickaccess.QuickAccessDialogDIALOG_USE_PERSISTED_SIZE" value="true"/>
 		<item key="org.eclipse.ui.internal.quickaccess.QuickAccessDialogDIALOG_USE_PERSISTED_LOCATION" value="false"/>
 		<list key="orderedElements">
-			<item value="/Ecore/model/Jenkins.model"/>
 			<item value="org.eclipse.ui.console.ConsoleView"/>
 		</list>
 		<list key="orderedProviders">
-			<item value="org.eclipse.ui.ide/org.eclipse.ui.internal.ide.dialogs.OpenFilesystemQuickAccessComputer"/>
 			<item value="org.eclipse.e4.ui.parts"/>
 		</list>
 		<list key="textEntries">
-			<item value="1"/>
-			<item value="1"/>
+			<item value="2"/>
 		</list>
 		<list key="textArray">
-			<item value="c:/users/zakar/eclipse-workspace/ecore/model/jenkins.model"/>
 			<item value="console"/>
+			<item value="conso"/>
 		</list>
 	</section>
 </section>
